@@ -1,0 +1,157 @@
+---
+# Global Settings
+esxi_1: "cdx-esxi-01.cdx.lab" # Dell PowerEdge R630, 2 x Intel Xeon E5-2695v4 18C/36T (72), 1.5 TB RAM
+esxi_2: "cdx-esxi-02.cdx.lab" # Dell PowerEdge R630, 2 x Intel Xeon E5-2695v4 18C/36T (72), 1.5 TB RAM
+esxi_3: "cdx-esxi-03.cdx.lab" # Dell PowerEdge R630, 2 x Intel Xeon E5-2695v4 18C/36T (72), 1.5 TB RAM
+esxi: ["cdx-esxi-01.cdx.lab","cdx-esxi-02.cdx.lab","cdx-esxi-03.cdx.lab"]
+cdx_store_1: "Datastore_1"
+store_1: "CDX-1"
+nfs_store: "vSphere"
+vcenter_hostname: "cdx-vcsa-01.cdx.lab"
+vcenter_datacenter: "CDX Datacenter"
+vcenter_cluster: "CDX"
+vcenter_validate_certs: false
+vcenter_username: "administrator@cdx.lab"
+vcenter_password: "IyTt+,uDhtR@.303"
+esxi_username: "root"
+esxi_password: "IyTt+,uDhtR@.303"
+esxi_std_switch: "vSwitch0"
+wds: "cdx-wds-01.cdx.lab"
+wds_user: "ansible"
+wds_net: "Windows VM Staging"
+
+#### VMWare OS Templates ####
+
+# Windows
+template_win10_pro_21h2: 
+template_win8.1: 
+template_win7: 
+template_winxp:
+template_win2k3r2:
+template_win2k8r2_data: "Base_Server2008R2_Data"
+template_win2k8r2_ent: "Base_Server2008R2_Ent"
+template_win2k8r2_std: "Base_Server2008R2_Std"
+template_win2k12r2_data: "Base_Server2012R2_Data"
+template_win2k12r2_std: "Base_Server2012R2_Std"
+template_win2k16_data: "Base_Server2016_Data"
+template_win2k16_std: "Base_Server2016_Std"
+template_win2k19_data: "Base_Server2019_Data"
+template_win2k19_std: "Base_Server2019_Std"
+template_win2k22_data: "Base_Server2022_Data"
+template_win2k22_std: "Base_Server2022_Std"
+
+# Linux
+# template_centos8_desktop: "CentOS_8_Desktop"
+template_centos7_desktop:  "CentOS.7.Desktop"
+template_centos8_server: "CentOS.8.Server"
+template_centos7_server:  "CentOS.7.Server"
+template_centos9_server:  "CentOS.9.Server"
+# template_ubuntu2110_desktop: "Ubuntu.21.10.Desktop"
+template_ubuntu1804_desktop: "Ubuntu.18.04.Desktop"
+
+# VMWare
+# template_vsphere703: "vsphere-esxi-7.0.3"
+
+# Infrastructure
+# template_pfsense: "pfSense_244"
+# template_vyos: "vyos-1.1.8-amd64"
+
+# Adversary Platforms
+template_kali:
+template_caldera:
+template_commandovm:
+
+##################################
+# OS ISO Images
+##################################
+
+iso_win10_21h2: "[Priority_1.5] _ISO/Windows_10_(21H2).ISO"
+iso_win7_ent: "[Priority_1.5] _ISO/en_windows_7_enterprise_with_sp1_x64_dvd_u_677651.iso"
+iso_win2k12r2: "[Priority_1.5] _ISO/SW_DVD9_Windows_Svr_Std_and_DataCtr_2012_R2_64Bit_English_-4_MLF_X19-82891-09-05-2018.ISO"
+iso_win2k22: "[Priority_1.5] _ISO/SW_DVD9_Win_Server_STD_CORE_2022__64Bit_English_DC_STD_MLF_X22-74290.ISO"
+iso_win2k19: "[Priority_1.5] _ISO/SW_DVD9_Win_Server_STD_CORE_2019_64Bit_English_DC_STD_MLF_X21-96581.ISO"
+iso_win2k16: "[Priority_1.5] _ISO/SW_DVD9_Win_Server_STD_CORE_2016_64Bit_English_-4_DC_STD_MLF_X21-70526.ISO"
+# iso_win11: "[Priority_1.5] _ISO/Microsoft Windows/Windows 11.ISO"
+# iso_win2k8r2: "[Priority_1.5] _ISO/SW_DVD5_Windows_Svr_DC_EE_SE_Web_2008_R2_64Bit_English_w_SP1_MLF_X17-22580.ISO"
+# iso_win8: "[Priority_1.5] _ISO/Microsoft Windows/Microsoft_Windows_8.1_Professional_x64.iso"
+# iso_win2k3r2: "[Priority_1.5] _ISO/Microsoft Windows/Microsoft Windows Server 2003 R2 Enterprise.iso"
+# iso_centos9_Stream: "[Priority_1.5] _ISO/Linux/CentOS-Stream-9-latest-x86_64-dvd1.iso"
+# iso_centos8_2004: "[Priority_1.5] _ISO/Linux/CentOS-8.2.2004-x86_64-dvd1.iso"
+# iso_centos7_1908:  "[Priority_1.5] _ISO/Linux/CentOS-7-x86_64-DVD-1908.iso"
+# iso_ubuntu2110_desktop: "[Priority_1.5] _ISO/Linux/ubuntu-21.10-desktop-amd64.iso"
+# iso_ubuntu1804_desktop: "[Priority_1.5] _ISO/Linux/ubuntu-18.04.2-desktop-amd64.iso"
+# iso_ubuntu2110_server: "[Priority_1.5] _ISO/Linux/ubuntu-21.10-live-server-amd64.iso"
+# iso_ubuntu1804_server: "[Priority_1.5] _ISO/Linux/ubuntu-18.04.2-live-server-amd64.iso"
+# iso_vsphere703: "vsphere-esxi-7.0.3"
+# iso_pfsense: "pfSense-CE-2.4.4-RELEASE-p3-amd64.iso"
+# iso_vyos: "vyos-1.4-rolling-202203070319-amd64.iso"
+# iso_kali: "[Priority_1.5] _ISO/Linux/kali-linux-2022.1-installer-amd64.iso"
+
+##################################
+# OS WDS Images
+##################################
+
+# wds_win_xp_pro:
+# wds_win_vista:
+# wds_win_7_pro_opp_2016: "win_7_pro_opp_2016_unattend.xml"
+# wds_win_7_pro: "win_7_sp1_pro_unattend.xml"
+# wds_win_8:
+# wds_win_81:
+# wds_win_10_pro_21h2_opp_2021: "Boot\\x64\\Images\\Win10_Pro_21H2_OPP_2021.wim"
+# wds_win_10_pro_21h2: "win_10_21h2_pro_unattend.xml"
+# wds_win_10_ent_21h2: "win_10_21h2_ent_unattend.xml"
+# wds_win_10_pro_wks_21h2: "win_10_21h2_pro_wks_unattend.xml"
+# wds_win_11_pro:
+# wds_win_11_ent:
+# wds_win_2003_r2_std: "win_server_2003_r2_std_unattend.xml"
+# wds_win_2003_r2_ent: "win_server_2003_r2_ent_unattend.xml"
+# wds_win_2008_r2_std: "win_server_2008_r2_std_unattend.xml"
+# wds_win_2008_r2_data: "win_server_2008_r2_data_unattend.xml"
+# wds_win_2012_r2_std: "win_server_2012_r2_std_unattend.xml"
+# wds_win_2012_r2_data: "win_server_2012_r2_data_unattend.xml"
+# wds_win_2016_std: "win_server_2016_std_unattend.xml"
+# wds_win_2016_data: "win_server_2016_data_unattend.xml"
+# wds_win_2019_std: "win_server_2019_std_unattend.xml"
+# wds_win_2019_data: "win_server_2019_data_unattend.xml"
+# wds_win_2022_std: "win_server_2022_std_unattend.xml"
+# wds_win_2022_data: "win_server_2022_data_unattend.xml"
+
+##################################
+# SOC Variables
+##################################
+
+
+
+##################################
+# Guest OS Types
+##################################
+
+os_winxp: winXPPro64Guest
+os_winvista: winVista64Guest
+os_win7: windows7_64Guest
+os_win8: windows8_64Guest
+os_win81: windows8_64Guest
+os_win10: windows9_64Guest
+os_win11: windows9_64Guest
+os_win2008r2: windows7Server64Guest
+os_win2012r2: windows8Server64Guest
+os_win2016: windows9Server64Guest
+os_win2019: windows2019srv_64Guest
+os_win2022: windows2019srvNext_64Guest
+os_win2025: windows2022srvNext_64Guest
+os_centos7: centos7_64Guest
+os_centos8: centos8_64Guest
+os_centos9: centos9_64Guest
+os_freebds12: freebsd12_64Guest
+os_freebds13: freebsd13_64Guest
+os_rhel7: rhel7_64Guest
+os_rhel8: rhel8_64Guest
+os_ubuntu: ubuntu64Guest
+
+##################################
+# Guest User Accounts
+##################################
+
+win_admin: Administrator
+win_admin_password: "P@ssw0rd"
+nix_root_password: "P@ssw0rd"
