@@ -1,0 +1,24 @@
+---
+- name: Power On {{ vm }}
+  community.vmware.vmware_guest_powerstate:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    name: "{{ vm }}"
+    state: powered-on
+    state_change_timeout: 200
+  delegate_to: localhost
+  register: deploy
+
+- name: Wait for {{ vm }} to be available
+  community.vmware.vmware_guest_tools_wait:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    name: "{{ vm }}"
+    timeout: 120
+  delegate_to: localhost
