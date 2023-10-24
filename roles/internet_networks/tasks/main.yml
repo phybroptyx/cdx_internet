@@ -1,0 +1,5 @@
+---
+- name: Initialize CDX Internet VSphere Networks
+  import_tasks: create_vsphere_networks.yml
+  vars:
+    terraform_folder_var: "./roles/internet_networks/tf"
