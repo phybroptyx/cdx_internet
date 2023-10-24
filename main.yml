@@ -1,0 +1,25 @@
+---
+- name: Deploy Virtual Internet Infrastructure
+  hosts: localhost
+  become: false
+  gather_facts: false
+  pre_tasks:
+    - include_vars: global_vars.yml
+    - include_vars: vcenter_vars.yml
+  roles:
+    - internet_networks
+    - vsphere_init
+    - tier_0_routers
+    - tier_1_routers
+    # - apt_config
+    # - kms_config
+    - nstp_config
+    # - sus_config
+    - web_config
+    # - yum_config
+    # - apt_deploy
+    # - kms_deploy
+    - nstp_deploy
+    # - sus_deploy
+    - web_deploy
+    # - yum_deploy
