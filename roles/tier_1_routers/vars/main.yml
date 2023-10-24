@@ -1,0 +1,24 @@
+---
+# Variables for the tier_1_rtr role
+
+folder: "CDX Environment/Internet/Tier 1 Routers"
+tier_1_rtr_ams: IXP-EQIX-2
+tier_1_rtr_syd: IXP-EQIX-3
+tier_1_rtr_sea: IXP-EQIX-4
+tier_1_rtr_tor: IXP-EQIX-5
+tier_1_rtr_de: IXP-EQIX-6
+tier_1_rtr_vlv: IXP-EQIX-7
+tier_1_rtr_dxb: IXP-EQIX-8
+tier_1_rtr_br: IXP-EQIX-9
+tier_1_rtr_icn: IXP-EQIX-10
+tier_1_rtr_lon: IXP-EQIX-11
+tier_1_rtr_ams_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_ams }}') }}"
+tier_1_rtr_syd_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_syd }}') }}"
+tier_1_rtr_sea_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_sea }}') }}"
+tier_1_rtr_tor_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_tor }}') }}"
+tier_1_rtr_de_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_de }}') }}"
+tier_1_rtr_vlv_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_vlv }}') }}"
+tier_1_rtr_dxb_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_dxb }}') }}"
+tier_1_rtr_br_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_br }}') }}"
+tier_1_rtr_icn_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_icn }}') }}"
+tier_1_rtr_lon_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_lon }}') }}"

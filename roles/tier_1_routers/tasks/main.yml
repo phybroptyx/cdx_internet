@@ -1,0 +1,104 @@
+---
+- name: Create Tier 1 Routers
+  import_tasks: clone_vyos.yml
+
+- name: Add NICs to {{ tier_1_rtr_ams }}
+  import_tasks: add_nic_to_ixp-eqix-2.yml
+
+- name: Add NICs to {{ tier_1_rtr_syd }}
+  import_tasks: add_nic_to_ixp-eqix-3.yml
+
+- name: Add NICs to {{ tier_1_rtr_sea }}
+  import_tasks: add_nic_to_ixp-eqix-4.yml
+
+- name: Add NICs to {{ tier_1_rtr_tor }}
+  import_tasks: add_nic_to_ixp-eqix-5.yml
+
+- name: Add NICs to {{ tier_1_rtr_de }}
+  import_tasks: add_nic_to_ixp-eqix-6.yml
+
+- name: Add NICs to {{ tier_1_rtr_vlv }}
+  import_tasks: add_nic_to_ixp-eqix-7.yml
+
+- name: Add NICs to {{ tier_1_rtr_dxb }}
+  import_tasks: add_nic_to_ixp-eqix-8.yml
+
+- name: Add NICs to {{ tier_1_rtr_br }}
+  import_tasks: add_nic_to_ixp-eqix-9.yml
+
+- name: Add NICs to {{ tier_1_rtr_icn }}
+  import_tasks: add_nic_to_ixp-eqix-10.yml
+
+- name: Add NICs to {{ tier_1_rtr_lon }}
+  import_tasks: add_nic_to_ixp-eqix-11.yml
+
+- name: Power On Tier 1 Routers
+  import_tasks: power_on_routers.yml
+
+- name: Wait for Tier 1 Routers to be available
+  import_tasks: wait_for_router_power_on.yml
+
+- name: Wait 15 seconds before continuing
+  import_tasks: ../common/tasks/wait_for_n_seconds.yml
+  vars:
+    seconds: 15
+
+- name: Configure {{ tier_1_rtr_ams }}
+  import_tasks: ../common/tasks/configure_vyos_router.yml
+  vars:
+    vm: "{{ tier_1_rtr_ams }}"
+    vyos_configuration: "{{ tier_1_rtr_ams_config }}"
+
+- name: Configure {{ tier_1_rtr_syd }}
+  import_tasks: ../common/tasks/configure_vyos_router.yml
+  vars:
+    vm: "{{ tier_1_rtr_syd }}"
+    vyos_configuration: "{{ tier_1_rtr_syd_config }}"
+
+- name: Configure {{ tier_1_rtr_sea }}
+  import_tasks: ../common/tasks/configure_vyos_router.yml
+  vars:
+    vm: "{{ tier_1_rtr_sea }}"
+    vyos_configuration: "{{ tier_1_rtr_sea_config }}"
+
+- name: Configure {{ tier_1_rtr_tor }}
+  import_tasks: ../common/tasks/configure_vyos_router.yml
+  vars:
+    vm: "{{ tier_1_rtr_tor }}"
+    vyos_configuration: "{{ tier_1_rtr_tor_config }}"
+
+- name: Configure {{ tier_1_rtr_de }}
+  import_tasks: ../common/tasks/configure_vyos_router.yml
+  vars:
+    vm: "{{ tier_1_rtr_de }}"
+    vyos_configuration: "{{ tier_1_rtr_de_config }}"
+
+- name: Configure {{ tier_1_rtr_vlv }}
+  import_tasks: ../common/tasks/configure_vyos_router.yml
+  vars:
+    vm: "{{ tier_1_rtr_vlv }}"
+    vyos_configuration: "{{ tier_1_rtr_vlv_config }}"
+
+- name: Configure {{ tier_1_rtr_dxb }}
+  import_tasks: ../common/tasks/configure_vyos_router.yml
+  vars:
+    vm: "{{ tier_1_rtr_dxb }}"
+    vyos_configuration: "{{ tier_1_rtr_dxb_config }}"
+
+- name: Configure {{ tier_1_rtr_br }}
+  import_tasks: ../common/tasks/configure_vyos_router.yml
+  vars:
+    vm: "{{ tier_1_rtr_br }}"
+    vyos_configuration: "{{ tier_1_rtr_br_config }}"
+
+- name: Configure {{ tier_1_rtr_icn }}
+  import_tasks: ../common/tasks/configure_vyos_router.yml
+  vars:
+    vm: "{{ tier_1_rtr_icn }}"
+    vyos_configuration: "{{ tier_1_rtr_icn_config }}"
+
+- name: Configure {{ tier_1_rtr_lon }}
+  import_tasks: ../common/tasks/configure_vyos_router.yml
+  vars:
+    vm: "{{ tier_1_rtr_lon }}"
+    vyos_configuration: "{{ tier_1_rtr_lon_config }}"

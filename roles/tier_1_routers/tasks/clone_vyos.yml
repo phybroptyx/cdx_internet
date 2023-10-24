@@ -1,0 +1,50 @@
+---
+- name:  Create {{ tier_1_rtr_ams }}
+  import_tasks: ../common/tasks/vmware_clone_vyos.yml
+  vars:
+    vm: "{{ tier_1_rtr_ams }}"
+
+- name:  Create {{ tier_1_rtr_syd }}
+  import_tasks: ../common/tasks/vmware_clone_vyos.yml
+  vars:
+    vm: "{{ tier_1_rtr_syd }}"
+
+- name:  Create {{ tier_1_rtr_sea }}
+  import_tasks: ../common/tasks/vmware_clone_vyos.yml
+  vars:
+    vm: "{{ tier_1_rtr_sea }}"
+
+- name:  Create {{ tier_1_rtr_tor }}
+  import_tasks: ../common/tasks/vmware_clone_vyos.yml
+  vars:
+    vm: "{{ tier_1_rtr_tor }}"
+
+- name:  Create {{ tier_1_rtr_de }}
+  import_tasks: ../common/tasks/vmware_clone_vyos.yml
+  vars:
+    vm: "{{ tier_1_rtr_de }}"
+
+- name:  Create {{ tier_1_rtr_vlv }}
+  import_tasks: ../common/tasks/vmware_clone_vyos.yml
+  vars:
+    vm: "{{ tier_1_rtr_vlv }}"
+
+- name:  Create {{ tier_1_rtr_dxb }}
+  import_tasks: ../common/tasks/vmware_clone_vyos.yml
+  vars:
+    vm: "{{ tier_1_rtr_dxb }}"
+
+- name:  Create {{ tier_1_rtr_br }}
+  import_tasks: ../common/tasks/vmware_clone_vyos.yml
+  vars:
+    vm: "{{ tier_1_rtr_br }}"
+
+- name:  Create {{ tier_1_rtr_icn }}
+  import_tasks: ../common/tasks/vmware_clone_vyos.yml
+  vars:
+    vm: "{{ tier_1_rtr_icn }}"
+
+- name:  Create {{ tier_1_rtr_lon }}
+  import_tasks: ../common/tasks/vmware_clone_vyos.yml
+  vars:
+    vm: "{{ tier_1_rtr_lon }}"

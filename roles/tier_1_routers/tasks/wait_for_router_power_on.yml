@@ -1,0 +1,22 @@
+---
+- name: Wait for Tier 1 Routers to be available
+  community.vmware.vmware_guest_tools_wait:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    name: "{{ item }}"
+    timeout: 120
+  delegate_to: localhost
+  with_items:
+    - "{{ tier_1_rtr_ams }}"
+    - "{{ tier_1_rtr_syd }}"
+    - "{{ tier_1_rtr_sea }}"
+    - "{{ tier_1_rtr_tor }}"
+    - "{{ tier_1_rtr_de }}"
+    - "{{ tier_1_rtr_vlv }}"
+    - "{{ tier_1_rtr_dxb }}"
+    - "{{ tier_1_rtr_br }}"
+    - "{{ tier_1_rtr_icn }}"
+    - "{{ tier_1_rtr_lon }}"
