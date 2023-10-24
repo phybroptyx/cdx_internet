@@ -1,0 +1,36 @@
+---
+- name: Include DNS entries from external JSON file
+  include_vars:
+    file: "{{ dns_zones }}"
+
+- name: Add root DNS zone configuration to DNS configuration script
+  ansible.builtin.lineinfile:
+    path: "{{ dns_config }}"
+    line: Add-DnsServerPrimaryZone -Name {{ item.name }} -ZoneFile {{ item.name }}.dns
+    create: yes
+  with_items: "{{ root_zones }}"
+  when: item.type == 'root'
+
+- name: Add Top-Level Domain DNS zone configuration to DNS configuration script
+  ansible.builtin.lineinfile:
+    path: "{{ dns_config }}"
+    line: Add-DnsServerPrimaryZone -Name {{ item.name }}.{{ item.zone }} -ZoneFile {{ item.zone }}.dns
+    create: yes
+  with_items: "{{ tld_zones }}"
+  when: item.type == 'tld'
+
+- name: Add Second-Level Domain DNS zone configuration to DNS configuration script
+  ansible.builtin.lineinfile:
+    path: "{{ dns_config }}"
+    line: Add-DnsServerPrimaryZone -Name {{ item.name }}.{{ item.tld }}.{{ item.zone }} -ZoneFile {{ item.zone }}.dns
+    create: yes
+  with_items: "{{ sld_zones }}"
+  when: item.type == 'sld'
+
+- name: Add Reverse Lookup DNS zone configuration to DNS configuration script
+  ansible.builtin.lineinfile:
+    path: "{{ dns_config }}"
+    line: Add-DnsServerPrimaryZone -NetworkID {{ item.id }} -ZoneFile {{ item.name }}.{{ item.zone }}.dns
+    create: yes
+  with_items: "{{ rev_zones }}"
+  when: item.type == 'rev'

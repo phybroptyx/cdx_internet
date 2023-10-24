@@ -1,0 +1,24 @@
+{
+  "root_zones": [
+    { "name":"edu", "type":"root" },
+    { "name":"ctf", "type":"root" },
+    { "name":"lab", "type":"root" },
+    { "name":"training", "type":"root" }
+  ],
+  "tld_zones": [
+    { "name":" osu", "zone":"edu", "type":"tld" },
+    { "name":" denver", "zone":"edu", "type":"tld" },
+    { "name":" uc", "zone":"edu", "type":"tld" },
+    { "name":" denhac", "zone":"edu", "type":"tld" },
+    { "name":" phoenix", "zone":"edu", "type":"tld" },
+    { "name":" ucla", "zone":"edu", "type":"tld" },
+    { "name":" mit", "zone":"edu", "type":"tld" },
+    { "name":" caltech", "zone":"edu", "type":"tld" },
+    { "name":" cmu", "zone":"edu", "type":"tld" },
+    { "name":" usafa", "zone":"edu", "type":"tld" },
+    { "name":" westpoint", "zone":"edu", "type":"tld" },
+    { "name":" coloradostate", "zone":"edu", "type":"tld" },
+    { "name":" mines", "zone":"edu", "type":"tld" },
+    { "name":" usna", "zone":"edu", "type":"tld" }
+  ]
+  }

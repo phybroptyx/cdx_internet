@@ -1,0 +1,17 @@
+---
+# Variables for the nstp role
+
+server_config: "./files/NSTP_Config.ps1"
+dns_config: "./files/DNS_Config.ps1"
+dns_entries: "./roles/nstp_config/files/dns_records.json"
+dns_zones: "./roles/nstp_config/files/dns_zones.json"
+vm: cdx-nstp-01
+ip: 46.244.164.88
+subnet_mask_length: 24
+gateway: 46.244.164.194
+dns_server: 46.244.164.88
+ethernet_alias: Ethernet0
+tz: UTC
+win_feature: "DNS -IncludeManagementTools"
+win_feature_name: "DNS Server"
+script_contents: "{{ lookup('file', './files/NSTP_Config.ps1') }}"

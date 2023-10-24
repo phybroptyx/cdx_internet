@@ -1,0 +1,20 @@
+---
+- name: Include DNS entries from external JSON file
+  include_vars:
+    file: "{{ dns_entries }}"
+
+- name: Add A record DNS entries to NSTP configuration script
+  ansible.builtin.lineinfile:
+    path: "{{ dns_config }}"
+    line: "Add-DnsServerResourceRecordA -Name {{ item.name }} -ZoneName {{ item.zone }} -IPv4Address {{ item.ip }}"
+    create: yes
+  with_items: "{{ dns_entries }}"
+  when: item.type == 'A'
+
+- name: Add CNAME record DNS entries to NSTP configuration script
+  ansible.builtin.lineinfile:
+    path: "{{ dns_config }}"
+    line: "Add-DnsServerResourceRecordCName -Name {{ item.name }} -ZoneName {{ item.zone }} -HostNameAlias {{ item.alias }}"
+    create: yes
+  with_items: "{{ dns_entries }}"
+  when: item.type == 'CNAME'
