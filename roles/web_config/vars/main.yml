@@ -1,0 +1,14 @@
+---
+# Variables for the web role
+
+server_config: "./files/Web_Config.ps1"
+vm: cdx-web-01
+ip: 23.96.0.60
+subnet_mask_length: 24
+gateway: 23.96.0.77
+dns_server: 46.244.164.88
+ethernet_alias: Ethernet0
+tz: "\"Pacific Standard Time\""
+win_feature_name: "Web Server"
+win_feature: Web-Server,Web-Mgmt-Tools
+web_config: "{{ lookup('file', '{{ server_config }}') }}"

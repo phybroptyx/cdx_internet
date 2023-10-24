@@ -1,0 +1,36 @@
+---
+- name: Wait 10 Seconds before continuing play
+  ansible.builtin.lineinfile:
+    path: "{{ server_config }}"
+    line: Start-Sleep -Seconds 10
+    create: yes
+
+- name: Remove Default Web Site on {{ vm }}
+  ansible.builtin.lineinfile:
+    path: "{{ server_config }}"
+    line: Remove-Website -Name "Default Web Site"
+    create: yes
+
+- name: Create Web Site on {{ vm }}
+  ansible.builtin.lineinfile:
+    path: "{{ server_config }}"
+    line: New-Website -Name {{ item.site }} -HostHeader {{ item.header }} -IPAddress {{ item.ip }} -PhysicalPath {{ item.path }} -Port {{ item.port }}
+    create: yes
+  loop:
+    - { site: MSFT_Connect_Test, header: www.msftconnecttest.com, ip: 23.96.0.60, path: W:\Web\msftconnecttest.com, port: 80 }
+    - { site: MSFT_NCSI, header: www.msftncsi.com, ip: 23.96.0.45, path: W:\Web\msftncsi.com, port: 80 }
+
+- name: Set Default Documents For New Websites on {{ vm }}
+  ansible.builtin.lineinfile:
+    path: "{{ server_config }}"
+    line: Add-WebConfigurationProperty -Filter '/system.webServer/defaultDocument/files' -Name '.' -Value @{value="{{ item.value }}"} -Location {{ item.site }}
+    create: yes
+  loop:
+    - { site: MSFT_Connect_Test, value: connecttest.txt }
+    - { site: MSFT_NCSI, value: ncsi.txt }
+
+- name: Restart Web Service on {{ vm }}
+  ansible.builtin.lineinfile:
+    path: "{{ server_config }}"
+    line: Restart-Service -Name 'W3SVC' -Force
+    create: yes

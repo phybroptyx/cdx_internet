@@ -1,0 +1,9 @@
+---
+- name: Add Firewall Rules to Firewall Configuration
+  ansible.builtin.lineinfile:
+    path: "{{ server_config }}"
+    line: "{{ item.command }}"
+    create: yes
+  loop:
+    - { command: 'New-NetFirewallRule -DisplayName \"Allow ICMPv4-In\" -Protocol ICMPv4' }
+    - { command: 'New-NetFirewallRule -DisplayName \"Allow ICMPv4-Out\" -Protocol ICMPv4 -Direction Outbound' }

@@ -1,0 +1,26 @@
+---
+# - name: Add website data
+#   community.vmware.vmware_vm_shell:
+#     hostname: "{{ vcenter_hostname }}"
+#     username: "{{ vcenter_username }}"
+#     password: "{{ vcenter_password }}"
+#     validate_certs: "{{ vcenter_validate_certs }}"
+#     datacenter: "{{ vcenter_datacenter }}"
+#     vm_id: "{{ vm }}"
+#     vm_username: "{{ win_admin }}"
+#     vm_password: "{{ win_admin_password }}"
+#     vm_shell: 'C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe'
+#     vm_shell_args: '-ExecutionPolicy Bypass -command "New-Item -ItemType Directory -Path {{ item.path }}; Add-Content -Path {{ item.content_path }} -Value {{ item.data }}"'
+#     wait_for_process: true
+#   loop:
+#     - { path: W:\Web\msftconnecttest.com, content_path: W:\Web\msftconnecttest.com\connecttest.txt, data: \"Microsoft Connect Test\" }
+#     - { path: W:\Web\msftncsi.com, content_path: W:\Web\msftncsi.com\ncsi.txt, data: \"Microsoft NCSI\" }
+
+- name: Add website data
+  ansible.builtin.lineinfile:
+    path: "{{ server_config }}"
+    line: New-Item -ItemType Directory -Path {{ item.path }}; Add-Content -Path {{ item.content_path }} -Value {{ item.data }}
+    create: yes
+  loop:
+    - { path: W:\Web\msftconnecttest.com, content_path: W:\Web\msftconnecttest.com\connecttest.txt, data: \"Microsoft Connect Test\" }
+    - { path: W:\Web\msftncsi.com, content_path: W:\Web\msftncsi.com\ncsi.txt, data: \"Microsoft NCSI\" }
