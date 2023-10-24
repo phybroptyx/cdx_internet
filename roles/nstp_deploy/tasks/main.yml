@@ -1,0 +1,30 @@
+---
+- name: Create Internet NSTP Server
+  import_tasks: ../common/tasks/terraform_clone_vm.yml  
+  vars:
+    terraform_folder_var: "./roles/nstp_deploy/tf"
+    task_title: "Internet NSTP Server"
+
+- name: Wait For {{ vm }} To Be Available
+  import_tasks: ../common/tasks/wait_for_vm_tools.yml    # Wait for System To Be Available
+
+- name: Set Time Zone to Coordinated Universal Time
+  import_tasks: ../common/tasks/win_configure_time_zone.yml    # Set to Coordinated Universal Time
+
+- name: Apply Server Configuration To {{ vm }}
+  import_tasks: win_configure_server.yml    # Apply Server Configuration
+
+- name: Shut Down {{ vm }}
+  import_tasks: ../common/tasks/win_shut_down_vm.yml    # Shut Down System
+
+- name: Wait for {{ vm }} to shut down
+  import_tasks: ../common/tasks/wait_for_vm_poweroff.yml    # Wait For Shut Down
+
+- name: Power On {{ vm }}
+  import_tasks: ../common/tasks/power_on_vm.yml    # Power On System
+
+- name: Install DNS on {{ vm }}
+  import_tasks: win_dns_install.yml    # Install DNS
+
+- name: Execute DNS Configuration Script on {{ vm }}
+  import_tasks: win_configure_dns.yml    # Execute DNS Configuration Script

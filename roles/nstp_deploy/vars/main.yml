@@ -1,0 +1,9 @@
+---
+# Variables for the NSTP role
+
+server_config: "./files/NSTP_Config.ps1"
+dns_config_src: "./files/DNS_Config.ps1"
+vm: cdx-nstp-01
+tz: UTC
+nstp_config: "{{ lookup('file', '{{ server_config }}') }}"
+dns_config: "{{ lookup('file', '{{ dns_config_src }}') }}"
