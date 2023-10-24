@@ -1,0 +1,17 @@
+---
+- name: Power On Core Routers
+  community.vmware.vmware_guest_powerstate:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    name: "{{ item }}"
+    state: powered-on
+    state_change_timeout: 200
+  delegate_to: localhost
+  register: deploy
+  with_items:
+    - "{{ core_rtr_1 }}"
+    - "{{ core_rtr_2 }}"
+    - "{{ core_rtr_3 }}"

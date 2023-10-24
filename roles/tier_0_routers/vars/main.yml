@@ -1,0 +1,10 @@
+---
+# Variables for the tier_0_rtr role
+
+folder: "CDX Environment/Internet/Core Routers"
+core_rtr_1: CORE-T0-R1
+core_rtr_2: CORE-T0-R2
+core_rtr_3: CORE-T0-R3
+core_rtr_1_config: "{{ lookup('ansible.builtin.file', 'files/{{ core_rtr_1 }}') }}"
+core_rtr_2_config: "{{ lookup('ansible.builtin.file', 'files/{{ core_rtr_2 }}') }}"
+core_rtr_3_config: "{{ lookup('ansible.builtin.file', 'files/{{ core_rtr_3 }}') }}"
