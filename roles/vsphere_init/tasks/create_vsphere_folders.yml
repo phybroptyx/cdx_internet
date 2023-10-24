@@ -1,0 +1,11 @@
+---
+- name: Initialize Terraform Environment
+  import_tasks: ../common/tasks/terraform_init.yml    # 'terraform init''
+  vars:
+    terraform_folder_var: "./roles/vsphere_init/tf"
+
+- name: Apply Terraform Configuration
+  import_tasks: ../common/tasks/terraform_apply.yml    # 'terraform apply''
+  vars:
+    terraform_folder_var: "./roles/vsphere_init/tf"
+    task_title: "VSphere Folders"
