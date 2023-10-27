@@ -1,0 +1,6 @@
+---
+- name: Power Off Internet Routers
+  import_tasks: power_off_routers.yml
+  
+- name: Delete Internet Routers
+  import_tasks: delete_routers.yml
