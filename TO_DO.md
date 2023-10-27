@@ -27,7 +27,7 @@
     - [ ] Tear Down Virtual Internet Infrastructure
 
   - [ ] **ROLES:**
-    - [x] apt_deploy
+    - **[x]** apt_deploy
     - [ ] gather_info
     - [ ] internet_networks
     - [ ] kms_deploy
