@@ -6,6 +6,7 @@
 - [ ] **ITEM:** Build Terraform exercise modules
 
     - [ ] **EXERCISES:**
+    
         - [ ] OBSIDIAN DAGGER
         - [ ] DESERT CITADEL
         - [ ] HARDENED CHAMPION
