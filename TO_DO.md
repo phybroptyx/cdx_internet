@@ -4,6 +4,7 @@
 - [ ] **ITEM:** Standardize Service Delivery Point (SDP) router deployments (Ansible), potentially integrating with Terraform
 
 - [ ] **ITEM:** Build Terraform exercise modules
+
     - [ ] **EXERCISES:**
         - [ ] OBSIDIAN DAGGER
         - [ ] DESERT CITADEL
