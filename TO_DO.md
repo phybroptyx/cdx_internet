@@ -1,5 +1,5 @@
 # Cyber Defense eXercise (CDX) from Code Project
-##TO DO LIST
+## TO DO LIST
 
 - [ ] **ITEM:** Standardize Service Delivery Point (SDP) router deployments (Ansible), potentially integrating with Terraform
 
