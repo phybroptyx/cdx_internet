@@ -246,6 +246,20 @@
      "alias": ""
    },
    {
+     "name": "cdx-apt-mr-01",
+     "zone": "linux.org",
+     "ip": "8.224.171.44",
+     "type": "A",
+     "alias": ""
+   },
+   {
+     "name": "cdx-yum-mr-01",
+     "zone": "linux.org",
+     "ip": "62.59.130.67",
+     "type": "A",
+     "alias": ""
+   },
+   {
      "name": "cdx-msft-wfe-02",
      "zone": "bing.com",
      "ip": "204.79.197.200",
@@ -699,6 +713,20 @@
      "ip": "",
      "type": "CNAME",
      "alias": "sdlc-ws-01.army.mil"
+   },
+   {
+     "name": "apt",
+     "zone": "linux.org",
+     "ip": "",
+     "type": "CNAME",
+     "alias": "cdx-apt-mr-01.linux.org"
+   },
+   {
+     "name": "yum",
+     "zone": "linux.org",
+     "ip": "",
+     "type": "CNAME",
+     "alias": "cdx-yum-mr-01.linux.org"
    }
   ]
 }
