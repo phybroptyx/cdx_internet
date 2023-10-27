@@ -1,0 +1,4 @@
+---
+- name: Disconnect KMS from CDX-E Network
+  import_tasks: move_kms_to_staging.yml
+
