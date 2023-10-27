@@ -1,0 +1,12 @@
+---
+- name: Remove CDX Internet Web Server
+  import_tasks: destroy_vsphere_servers.yml
+  vars:
+    terraform_folder_var: "/root/ansible/playbooks/cdx_internet/roles/web_deploy/tf"
+    task_title: "CDX Internet Web Server"
+
+- name: Remove CDX Internet DNS/NTP Server
+  import_tasks: destroy_vsphere_servers.yml
+  vars:
+    terraform_folder_var: "/root/ansible/playbooks/cdx_internet/roles/nstp_deploy/tf"
+    task_title: "CDX Internet DNS/NTP Server"
