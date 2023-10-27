@@ -21,31 +21,35 @@
 
 - [ ] **ITEM:** Author documentation
 
-  - [ ] **PLAYBOOKS:** 
-    - [ ] cdx_internet
-    - [ ] cdx_exercise
+  - [ ] **PLAYBOOK: cdx_internet**
 
-  - [ ] **PLAYS:** 
-    - [ ] cdx_internet: Deploy Virtual Internet Infrastructure
-    - [ ] cdx_internet: Tear Down Virtual Internet Infrastructure
+    - [ ] **PLAYS:** 
+        - [ ] Deploy Virtual Internet Infrastructure
+        - [ ] Tear Down Virtual Internet Infrastructure
 
-  - [ ] **ROLES:**
-    - [x] cdx_internet: apt_deploy
-    - [ ] gather_info
-    - [ ] internet_networks
-    - [ ] kms_deploy
-    - [ ] kms_reset
-    - [ ] nstp_config
-    - [ ] nstp_deploy
-    - [ ] repo_reset
-    - [x] sus_deploy
-    - [ ] teardown_networks
-    - [ ] teardown_routers
-    - [ ] teardown_servers
-    - [ ] teardown_vsphere
-    - [ ] tier_0_routers
-    - [ ] tier_1_routers
-    - [ ] vsphere_init
-    - [ ] web_config
-    - [ ] web_deploy
-    - [x] yum_deploy
+    - [ ] **ROLES:**
+        - [x] apt_deploy
+        - [ ] gather_info
+        - [ ] internet_networks
+        - [ ] kms_deploy
+        - [ ] kms_reset
+        - [ ] nstp_config
+        - [ ] nstp_deploy
+        - [ ] repo_reset
+        - [x] sus_deploy
+        - [ ] teardown_networks
+        - [ ] teardown_routers
+        - [ ] teardown_servers
+        - [ ] teardown_vsphere
+        - [ ] tier_0_routers
+        - [ ] tier_1_routers
+        - [ ] vsphere_init
+        - [ ] web_config
+        - [ ] web_deploy
+        - [x] yum_deploy
+
+  - [ ] **PLAYBOOK: cdx_exercise**
+
+    - [ ] **PLAYS:**
+
+    - [ ] **ROLES:**
