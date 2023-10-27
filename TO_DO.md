@@ -16,6 +16,7 @@
         - [ ] BRASS DEMON
         - [ ] DEMON KNIGHT
         - [ ] DIAMOND REIGN
+        - [ ] FUTURE JAEGER
 
 - [ ] **cdx_internet:** Develop Packer/Terraform code for repository creation and configuration
 
