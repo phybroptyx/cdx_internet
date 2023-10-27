@@ -11,15 +11,26 @@
     - vsphere_init
     - tier_0_routers
     - tier_1_routers
-    # - apt_config
-    # - kms_config
     - nstp_config
-    # - sus_config
     - web_config
-    # - yum_config
     # - apt_deploy
-    # - kms_deploy
+    - kms_deploy
     - nstp_deploy
-    # - sus_deploy
+    - sus_deploy
     - web_deploy
-    # - yum_deploy
+    - yum_deploy
+
+# - name: Tear Down Virtual Internet Infrastructure
+#   hosts: localhost
+#   become: false
+#   gather_facts: false
+#   pre_tasks:
+#     - include_vars: global_vars.yml
+#     - include_vars: vcenter_vars.yml
+#   roles:
+#     - kms_reset
+#     - repo_reset
+#     - teardown_routers
+#     - teardown_servers
+#     - teardown_networks
+#     - teardown_vsphere
