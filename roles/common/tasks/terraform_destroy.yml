@@ -1,0 +1,6 @@
+---
+- name: "DEPLOY: {{ task_title }}"
+  ansible.builtin.command: terraform destroy --auto-approve -var-file=sensitive.tfvars
+  become: no
+  args:
+    chdir: "{{ terraform_folder_var }}"
