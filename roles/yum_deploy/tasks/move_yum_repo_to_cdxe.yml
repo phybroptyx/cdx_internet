@@ -1,0 +1,12 @@
+---
+- name: Connect YUM Repository to CDX-E Network
+  community.vmware.vmware_guest_network:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    name: yum-mirror
+    mac_address: 00:50:56:9d:ae:8e
+    network_name: "CDX - Tier 2 - Amsterdam"
+    state: present
