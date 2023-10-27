@@ -1,0 +1,11 @@
+---
+- name: Initialize Terraform Environment
+  import_tasks: ../common/tasks/terraform_init.yml    # 'terraform init''
+  vars:
+    terraform_folder_var: "./roles/vsphere_init/tf"
+
+- name: Destroy Terraform Configuration
+  import_tasks: ../common/tasks/terraform_destroy.yml    # 'terraform destroy''
+  vars:
+    terraform_folder_var: "./roles/vsphere_init/tf"
+    task_title: "VSphere Folders"

@@ -1,0 +1,3 @@
+---
+- name: Delete CDX Internet VSphere Folders
+  import_tasks: delete_vsphere_folders.yml    # Remove folder structure from VSphere environment
