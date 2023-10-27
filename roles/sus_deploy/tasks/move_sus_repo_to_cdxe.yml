@@ -1,0 +1,12 @@
+---
+- name: Connect Windows Update Repository to CDX-E Network
+  community.vmware.vmware_guest_network:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    name: cdx-sus-01.cdx.lab
+    mac_address: 00:0c:29:ec:65:53
+    network_name: "CDX - Tier 2 - Seattle"
+    state: present

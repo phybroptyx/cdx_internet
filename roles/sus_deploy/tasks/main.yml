@@ -1,0 +1,7 @@
+---
+- name: Connect Windows Update Repository to CDX-E Network
+  import_tasks: move_sus_repo_to_cdxe.yml
+
+- name: Relocate Windows Update Repository in VSphere
+  import_tasks: move_sus_repo_in_vsphere.yml
+
