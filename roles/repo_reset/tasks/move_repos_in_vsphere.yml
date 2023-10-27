@@ -1,0 +1,15 @@
+---
+- name: Remove Repositories from Internet Servers VSphere Folder
+  community.vmware.vmware_guest_move:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    name: "{{ item }}"
+    dest_folder: "/{{ vcenter_datacenter }}/vm/Core Infrastructure"
+  with_items:
+    - cdx-sus-01.cdx.lab
+    - yum-mirror
+    # - apt-mirror
+  delegate_to: localhost

@@ -1,0 +1,7 @@
+---
+- name: Disconnect Repositories from CDX-E Network
+  import_tasks: move_repos_to_staging.yml
+
+- name: Relocate Repositories in VSphere
+  import_tasks: move_repos_in_vsphere.yml
+
