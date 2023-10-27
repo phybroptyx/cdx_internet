@@ -1,0 +1,6 @@
+---
+- name: Remove CDX Internet VSphere Networks
+  import_tasks: destroy_vsphere_networks.yml
+  vars:
+    terraform_folder_var: "/root/ansible/playbooks/cdx_internet/roles/internet_networks/tf"
+    task_title: "CDX Internet VSphere Networks"
