@@ -82,6 +82,7 @@
     { "name":" root-servers", "zone":"net", "type":"tld" },
     { "name":" microsoft", "zone":"com", "type":"tld" },
     { "name":" cnn", "zone":"com", "type":"tld" },
+    { "name":" linux", "zone":"org", "type":"tld" },
     { "name":" foxnews", "zone":"com", "type":"tld" },
     { "name":" msnbc", "zone":"com", "type":"tld" },
     { "name":" windows", "zone":"com", "type":"tld" },
