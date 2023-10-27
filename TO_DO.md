@@ -21,7 +21,7 @@
 
 - [ ] **ITEM:** Author documentation
 
-  - [ ] **PLAYBOOK: cdx_internet**
+  - [ ] **PLAYBOOK:** cdx_internet
 
     - [ ] **PLAYS:** 
         - [ ] Deploy Virtual Internet Infrastructure
@@ -29,7 +29,6 @@
 
     - [ ] **ROLES:**
         - [x] apt_deploy
-        - [ ] gather_info
         - [ ] internet_networks
         - [ ] kms_deploy
         - [ ] kms_reset
@@ -48,8 +47,18 @@
         - [ ] web_deploy
         - [x] yum_deploy
 
-  - [ ] **PLAYBOOK: cdx_exercise**
+  - [ ] **PLAYBOOK:** cdx_exercise
 
     - [ ] **PLAYS:**
+        - [ ] Destroy Previous Exercise Environment
+        - [ ] Deploy Defended Network Environment
+        - [ ] Deploy Blue Team SOC Environment
+        - [ ] Deploy Red Team Environment
 
     - [ ] **ROLES:**
+        - [ ] gather_info
+        - [ ] folder_init
+        - [ ] network_init
+        - [ ] mpnet_init
+        - [ ] blue_init
+        - [ ] red_init
