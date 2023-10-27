@@ -1,9 +1,9 @@
 # Cyber Defense eXercise (CDX) from Code Project
 ## TO DO LIST
 
-- [ ] **ITEM:** cdx_exercise: Standardize Service Delivery Point (SDP) router deployments (Ansible), potentially integrating with Terraform
+- [ ] **cdx_exercise:** Standardize Service Delivery Point (SDP) router deployments (Ansible), potentially integrating with Terraform
 
-- [ ] **ITEM:** cdx_exercise: Build Terraform exercise modules
+- [ ] **cdx_exercise:** Build Terraform exercise modules
 
     - [ ] **EXERCISES:**
 
@@ -17,9 +17,9 @@
         - [ ] DEMON KNIGHT
         - [ ] DIAMOND REIGN
 
-- [ ] **ITEM:** cdx_internet: Develop Packer/Terraform code for repository creation and configuration
+- [ ] **cdx_internet:** Develop Packer/Terraform code for repository creation and configuration
 
-- [ ] **ITEM:** all: Author documentation
+- [ ] **all:** Author documentation
 
   - [ ] **PLAYBOOK:** cdx_internet
 
