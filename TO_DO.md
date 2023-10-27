@@ -6,7 +6,7 @@
 - [ ] **ITEM:** Build Terraform exercise modules
 
     - [ ] **EXERCISES:**
-    
+
         - [ ] OBSIDIAN DAGGER
         - [ ] DESERT CITADEL
         - [ ] HARDENED CHAMPION
@@ -23,13 +23,14 @@
 
   - [ ] **PLAYBOOKS:** 
     - [ ] cdx_internet
+    - [ ] cdx_exercise
 
   - [ ] **PLAYS:** 
-    - [ ] Deploy Virtual Internet Infrastructure
-    - [ ] Tear Down Virtual Internet Infrastructure
+    - [ ] cdx_internet: Deploy Virtual Internet Infrastructure
+    - [ ] cdx_internet: Tear Down Virtual Internet Infrastructure
 
   - [ ] **ROLES:**
-    - [x] apt_deploy
+    - [x] cdx_internet: apt_deploy
     - [ ] gather_info
     - [ ] internet_networks
     - [ ] kms_deploy
