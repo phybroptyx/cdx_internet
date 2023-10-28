@@ -3,6 +3,10 @@
 
 - [ ] **cdx_exercise:** Standardize Service Delivery Point (SDP) router deployments (Ansible), potentially integrating with Terraform
 
+- [ ] **all:** Research using the Terraform VSphere provider for deploying VyOS systems
+
+- [ ] **cdx_exercise:** Develop OS/software vulnerability deployment plays/tasks
+
 - [ ] **cdx_exercise:** Build Terraform exercise modules
 
     - [ ] **EXERCISES:**
