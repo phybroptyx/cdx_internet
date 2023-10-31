@@ -1,13 +1,15 @@
 # Cyber Defense eXercise (CDX) from Code Project
 ## TO DO LIST
 
-- [ ] **cdx_exercise:** Standardize Service Delivery Point (SDP) router deployments (Ansible), potentially integrating with Terraform
+- [ ] **PLAYBOOK: cdx_exercise:** Standardize Service Delivery Point (SDP) router deployments (Ansible), potentially integrating with Terraform
 
-- [ ] **all:** Research using the Terraform VSphere provider for deploying VyOS systems
+- [ ] **PLAYBOOK: all:** Research using the Terraform VSphere provider for deploying VyOS systems
 
-- [ ] **cdx_exercise:** Develop OS/software vulnerability deployment plays/tasks
+- [ ] **vsphere:** Research using the Terraform VSphere provider for deploying VyOS systems
 
-- [ ] **cdx_exercise:** Build Terraform exercise modules
+- [ ] **PLAYBOOK: cdx_exercise:** Develop OS/software vulnerability deployment plays/tasks
+
+- [ ] **PLAYBOOK: cdx_exercise:** Build Terraform exercise modules
 
     - [ ] **EXERCISES:**
 
@@ -22,9 +24,9 @@
         - [ ] DIAMOND REIGN
         - [ ] FUTURE JAEGER
 
-- [ ] **cdx_internet:** Develop Packer/Terraform code for repository creation and configuration
+- [ ] **PLAYBOOK: cdx_internet:** Develop Packer/Terraform code for repository creation and configuration
 
-- [ ] **all:** Author documentation
+- [ ] **PLAYBOOK: all:** Author documentation
 
   - [ ] **PLAYBOOK:** cdx_internet
 
