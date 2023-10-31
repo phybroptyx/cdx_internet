@@ -5,7 +5,41 @@
 
 - [ ] **PLAYBOOK: all:** Research using the Terraform VSphere provider for deploying VyOS systems
 
-- [ ] **vsphere:** Research using the Terraform VSphere provider for deploying VyOS systems
+- [ ] **vsphere:** Build Templates for OS deployments
+
+    - [ ] Windows
+    
+        - [x] Windows Server 2022
+        - [x] Windows Server 2019
+        - [x] Windows Server 2016
+        - [x] Windows Server 2012 R2
+        - [x] Windows Server 2008 R2
+        - [ ] Windows 10 Build 21H2
+        - [x] Windows 10 Build 1809
+        - [x] Windows 10 Build 1511
+        - [x] Windows 8.1
+        - [x] Windows 7 SP 1
+
+    - [ ] Linux
+    
+        - [x] CentOS 9 Server
+        - [x] CentOS 9 Dekstop
+        - [x] CentOS 8 Server
+        - [x] CentOS 8 Dekstop
+        - [x] CentOS 7 Server
+        - [x] CentOS 7 Dekstop
+        - [ ] Fedora 38 Server
+        - [x] Fedora 38 Workstation
+        - [x] Ubuntu 22.04 Server
+        - [x] Ubuntu 22.04 Desktop
+        - [x] Ubuntu 20.04 Server
+        - [x] Ubuntu 20.04 Desktop
+        - [x] Ubuntu 18.04 Server
+        - [x] Ubuntu 18.04 Desktop
+        - [x] Ubuntu 16.04 Server
+        - [x] Ubuntu 16.04 Desktop
+        - [ ] Debian 12
+        - [ ] Debian 11
 
 - [ ] **PLAYBOOK: cdx_exercise:** Develop OS/software vulnerability deployment plays/tasks
 
