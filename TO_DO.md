@@ -1,9 +1,9 @@
 # Cyber Defense eXercise (CDX) from Code Project
 ## TO DO LIST
 
-- [ ] **PLAYBOOK: cdx_exercise:** Standardize Service Delivery Point (SDP) router deployments (Ansible), potentially integrating with Terraform
+- [x] **PLAYBOOK: cdx_exercise:** Standardize Service Delivery Point (SDP) router deployments (Ansible), potentially integrating with Terraform
 
-- [ ] **PLAYBOOK: all:** Research using the Terraform VSphere provider for deploying VyOS systems
+- [x] **PLAYBOOK: all:** Research using the Terraform VSphere provider for deploying VyOS systems
 
 - [ ] **vsphere:** Build Templates for OS deployments
 
@@ -28,7 +28,7 @@
         - [x] CentOS 8 Dekstop
         - [x] CentOS 7 Server
         - [x] CentOS 7 Dekstop
-        - [ ] Fedora 38 Server
+        - [x] Fedora 38 Server
         - [x] Fedora 38 Workstation
         - [x] Ubuntu 22.04 Server
         - [x] Ubuntu 22.04 Desktop
