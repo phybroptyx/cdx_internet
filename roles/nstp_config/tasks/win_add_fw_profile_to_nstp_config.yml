@@ -1,6 +1,0 @@
----
-- name: Configure Network Interface for {{ vm }} - Set Firewall Profile to Public
-  ansible.builtin.lineinfile:
-    path: "{{ server_config }}"
-    line: Get-NetConnectionProfile | Set-NetConnectionProfile -NetworkCategory Public
-    create: yes

@@ -1,7 +1,0 @@
----
-- name: Connect YUM Repository to CDX-E Network
-  import_tasks: move_yum_repo_to_cdxe.yml
-
-- name: Relocate YUM Repository in VSphere
-  import_tasks: move_yum_repo_in_vsphere.yml
-

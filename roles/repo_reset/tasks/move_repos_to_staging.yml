@@ -13,4 +13,4 @@
   loop:
     - { name: cdx-sus-01.cdx.lab, mac: 00:0c:29:ec:65:53 }
     - { name: yum-mirror, mac: 00:50:56:9d:ae:8e }
-    # - { name: apt-mirror, mac: 00:50:56:9d:ae:8e }
+    - { name: apt-mirror, mac: 00:50:56:9d:ae:8e }

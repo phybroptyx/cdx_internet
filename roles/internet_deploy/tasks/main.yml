@@ -1,0 +1,9 @@
+---
+- name: Deploy VSphere Environment"
+  import_tasks: deploy_vsphere_environment.yml    # Notes
+
+- name: Deploy Internet Routers"
+  import_tasks: deploy_routers.yml   # Notes
+
+- name: Deploy Internet Services"
+  import_tasks: deploy_services.yml   # Notes

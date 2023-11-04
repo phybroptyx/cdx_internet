@@ -1,3 +1,0 @@
----
-- name: Initialize CDX Exercise VSphere Folders
-  import_tasks: create_vsphere_folders.yml    # Initialize folder structure within VSphere environment

@@ -1,7 +1,0 @@
----
-# Variables for the web role
-
-server_config: "./files/Web_Config.ps1"
-vm: cdx-web-01
-tz: \"Pacific Standard Time\"
-web_config: "{{ lookup('file', '{{ server_config }}') }}"
