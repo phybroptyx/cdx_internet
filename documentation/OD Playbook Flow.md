@@ -3,201 +3,323 @@
 
 ```mermaid
 ---
-title: Ansible Playbook Grapher
+title: Operation: OBSIDIAN DAGGER Deployment Playbook Flow
 ---
 %%{ init: { "flowchart": { "curve": "bumpX" } } }%%
 flowchart LR
-	%% Start of the playbook 'exercise_deploy/main.yml'
-	playbook_f33451dd("exercise_deploy/main.yml")
-		%% Start of the play 'Play: Choose Exercise to Deploy (1)'
-		play_183b634d["Play: Choose Exercise to Deploy (1)"]
-		style play_183b634d fill:#319b48,color:#ffffff
-		playbook_f33451dd --> |"1"| play_183b634d
-		linkStyle 0 stroke:#319b48,color:#319b48
-			pre_task_044716a8["[pre_task]  include_vars"]
-			style pre_task_044716a8 stroke:#319b48,fill:#ffffff
-			play_183b634d --> |"1"| pre_task_044716a8
-			linkStyle 1 stroke:#319b48,color:#319b48
-			%% Start of the role 'gather_info'
-			play_183b634d --> |"2"| role_d6611c42
-			linkStyle 2 stroke:#319b48,color:#319b48
-			role_d6611c42("[role] gather_info")
-			style role_d6611c42 fill:#319b48,color:#ffffff,stroke:#319b48
-				task_d00a9728[" gather_info : Store selected exercise"]
-				style task_d00a9728 stroke:#319b48,fill:#ffffff
-				role_d6611c42 --> |"1"| task_d00a9728
-				linkStyle 3 stroke:#319b48,color:#319b48
-				task_92c3b21a[" gather_info : Convert user_input to lowercase and replace spaces with underscores"]
-				style task_92c3b21a stroke:#319b48,fill:#ffffff
-				role_d6611c42 --> |"2"| task_92c3b21a
-				linkStyle 4 stroke:#319b48,color:#319b48
-				task_8a83b687[" gather_info : Set exercise variable as a role fact"]
-				style task_8a83b687 stroke:#319b48,fill:#ffffff
-				role_d6611c42 --> |"3"| task_8a83b687
-				linkStyle 5 stroke:#319b48,color:#319b48
-				task_7178ac55[" gather_info : Output"]
-				style task_7178ac55 stroke:#319b48,fill:#ffffff
-				role_d6611c42 --> |"4"| task_7178ac55
-				linkStyle 6 stroke:#319b48,color:#319b48
-				task_d5c6df6c[" gather_info : Record Current Scenario Path"]
-				style task_d5c6df6c stroke:#319b48,fill:#ffffff
-				role_d6611c42 --> |"5"| task_d5c6df6c
-				linkStyle 7 stroke:#319b48,color:#319b48
-				task_559605bf[" gather_info : Record Current Exercise"]
-				style task_559605bf stroke:#319b48,fill:#ffffff
-				role_d6611c42 --> |"6"| task_559605bf
-				linkStyle 8 stroke:#319b48,color:#319b48
-			%% End of the role 'gather_info'
-		%% End of the play 'Play: Choose Exercise to Deploy (1)'
-		%% Start of the play 'Play: Deploy Exercise Environment (1)'
-		play_9215770f["Play: Deploy Exercise Environment (1)"]
-		style play_9215770f fill:#288aa4,color:#ffffff
-		playbook_f33451dd --> |"2"| play_9215770f
-		linkStyle 9 stroke:#288aa4,color:#288aa4
-			pre_task_173a256e["[pre_task]  include_vars"]
-			style pre_task_173a256e stroke:#288aa4,fill:#ffffff
-			play_9215770f --> |"1"| pre_task_173a256e
-			linkStyle 10 stroke:#288aa4,color:#288aa4
-			pre_task_4f2fedcf["[pre_task]  include_vars"]
-			style pre_task_4f2fedcf stroke:#288aa4,fill:#ffffff
-			play_9215770f --> |"2"| pre_task_4f2fedcf
-			linkStyle 11 stroke:#288aa4,color:#288aa4
-			pre_task_14084aef["[pre_task]  include_vars"]
-			style pre_task_14084aef stroke:#288aa4,fill:#ffffff
-			play_9215770f --> |"3"| pre_task_14084aef
-			linkStyle 12 stroke:#288aa4,color:#288aa4
-			pre_task_95230e97["[pre_task]  Set Exercise"]
-			style pre_task_95230e97 stroke:#288aa4,fill:#ffffff
-			play_9215770f --> |"4"| pre_task_95230e97
-			linkStyle 13 stroke:#288aa4,color:#288aa4
-			pre_task_0d8fe6a1["[pre_task]  Display Current Exercise"]
-			style pre_task_0d8fe6a1 stroke:#288aa4,fill:#ffffff
-			play_9215770f --> |"5"| pre_task_0d8fe6a1
-			linkStyle 14 stroke:#288aa4,color:#288aa4
-			%% Start of the role 'obsidian_dagger'
-			play_9215770f --> |"6"| role_df6d4105
-			linkStyle 15 stroke:#288aa4,color:#288aa4
-			role_df6d4105("[role] obsidian_dagger")
-			style role_df6d4105 fill:#288aa4,color:#ffffff,stroke:#288aa4
-				task_85264f4e[" obsidian_dagger : Initialize Terraform Environment"]
-				style task_85264f4e stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"1"| task_85264f4e
-				linkStyle 16 stroke:#288aa4,color:#288aa4
-				task_dd680f4e[" obsidian_dagger : DEPLOY: {{ task_title }}"]
-				style task_dd680f4e stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"2"| task_dd680f4e
-				linkStyle 17 stroke:#288aa4,color:#288aa4
-				task_7e5e30c7[" obsidian_dagger : {{ task_title }}"]
-				style task_7e5e30c7 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"3"| task_7e5e30c7
-				linkStyle 18 stroke:#288aa4,color:#288aa4
-				task_542753b7[" obsidian_dagger : Initialize Terraform Environment"]
-				style task_542753b7 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"4"| task_542753b7
-				linkStyle 19 stroke:#288aa4,color:#288aa4
-				task_cd11dc7a[" obsidian_dagger : DEPLOY: {{ task_title }}"]
-				style task_cd11dc7a stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"5"| task_cd11dc7a
-				linkStyle 20 stroke:#288aa4,color:#288aa4
-				task_c8067e27[" obsidian_dagger : Wait for SDP Routers to be available"]
-				style task_c8067e27 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"6"| task_c8067e27
-				linkStyle 21 stroke:#288aa4,color:#288aa4
-				task_ec166142[" obsidian_dagger : {{ task_title }}"]
-				style task_ec166142 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"7"| task_ec166142
-				linkStyle 22 stroke:#288aa4,color:#288aa4
-				task_df1ea25e[" obsidian_dagger : Configure {{ vm }}"]
-				style task_df1ea25e stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"8"| task_df1ea25e
-				linkStyle 23 stroke:#288aa4,color:#288aa4
-				task_bc4d2760[" obsidian_dagger : Configure {{ vm }}"]
-				style task_bc4d2760 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"9"| task_bc4d2760
-				linkStyle 24 stroke:#288aa4,color:#288aa4
-				task_b46acf1b[" obsidian_dagger : Initialize Terraform Environment"]
-				style task_b46acf1b stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"10"| task_b46acf1b
-				linkStyle 25 stroke:#288aa4,color:#288aa4
-				task_b6aa85fa[" obsidian_dagger : DEPLOY: {{ task_title }}"]
-				style task_b6aa85fa stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"11"| task_b6aa85fa
-				linkStyle 26 stroke:#288aa4,color:#288aa4
-				task_74ec3a35[" obsidian_dagger : Wait for {{ vm }} to be available"]
-				style task_74ec3a35 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"12"| task_74ec3a35
-				linkStyle 27 stroke:#288aa4,color:#288aa4
-				task_2926c48e[" obsidian_dagger : {{ task_title }}"]
-				style task_2926c48e stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"13"| task_2926c48e
-				linkStyle 28 stroke:#288aa4,color:#288aa4
-				task_04e4f753[" obsidian_dagger : {{ task_title }}"]
-				style task_04e4f753 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"14"| task_04e4f753
-				linkStyle 29 stroke:#288aa4,color:#288aa4
-				task_8a0dfad5[" obsidian_dagger : {{ task_title }}"]
-				style task_8a0dfad5 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"15"| task_8a0dfad5
-				linkStyle 30 stroke:#288aa4,color:#288aa4
-				task_e50c9fb9[" obsidian_dagger : Wait for {{ vm }} to be available"]
-				style task_e50c9fb9 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"16"| task_e50c9fb9
-				linkStyle 31 stroke:#288aa4,color:#288aa4
-				task_517adf8b[" obsidian_dagger : {{ task_title }}"]
-				style task_517adf8b stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"17"| task_517adf8b
-				linkStyle 32 stroke:#288aa4,color:#288aa4
-				task_5e154c1b[" obsidian_dagger : {{ task_title }}"]
-				style task_5e154c1b stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"18"| task_5e154c1b
-				linkStyle 33 stroke:#288aa4,color:#288aa4
-				task_2968657b[" obsidian_dagger : {{ task_title }}"]
-				style task_2968657b stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"19"| task_2968657b
-				linkStyle 34 stroke:#288aa4,color:#288aa4
-				task_336091bd[" obsidian_dagger : {{ task_title }}"]
-				style task_336091bd stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"20"| task_336091bd
-				linkStyle 35 stroke:#288aa4,color:#288aa4
-				task_1b95dbd8[" obsidian_dagger : {{ task_title }}"]
-				style task_1b95dbd8 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"21"| task_1b95dbd8
-				linkStyle 36 stroke:#288aa4,color:#288aa4
-				task_7a971101[" obsidian_dagger : {{ task_title }}"]
-				style task_7a971101 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"22"| task_7a971101
-				linkStyle 37 stroke:#288aa4,color:#288aa4
-				task_ba367492[" obsidian_dagger : {{ task_title }}"]
-				style task_ba367492 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"23"| task_ba367492
-				linkStyle 38 stroke:#288aa4,color:#288aa4
-				task_727b98df[" obsidian_dagger : {{ task_title }}"]
-				style task_727b98df stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"24"| task_727b98df
-				linkStyle 39 stroke:#288aa4,color:#288aa4
-				task_064aa7c5[" obsidian_dagger : {{ task_title }}"]
-				style task_064aa7c5 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"25"| task_064aa7c5
-				linkStyle 40 stroke:#288aa4,color:#288aa4
-				task_f131f1a4[" obsidian_dagger : {{ task_title }}"]
-				style task_f131f1a4 stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"26"| task_f131f1a4
-				linkStyle 41 stroke:#288aa4,color:#288aa4
-				task_beb2e68e[" obsidian_dagger : {{ task_title }}"]
-				style task_beb2e68e stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"27"| task_beb2e68e
-				linkStyle 42 stroke:#288aa4,color:#288aa4
-				task_e6126b7c[" obsidian_dagger : {{ task_title }}"]
-				style task_e6126b7c stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"28"| task_e6126b7c
-				linkStyle 43 stroke:#288aa4,color:#288aa4
-				task_f8da61ef[" obsidian_dagger : {{ task_title }}"]
-				style task_f8da61ef stroke:#288aa4,fill:#ffffff
-				role_df6d4105 --> |"29"| task_f8da61ef
-				linkStyle 44 stroke:#288aa4,color:#288aa4
-			%% End of the role 'obsidian_dagger'
-		%% End of the play 'Play: Deploy Exercise Environment (1)'
-	%% End of the playbook 'exercise_deploy/main.yml'
+	%% Start of the playbook 'obsidian_dagger/main.yml'
+	playbook_e7f329b2("obsidian_dagger/main.yml")
+		%% Start of the play 'Play: Deploy OBSIDIAN DAGGER VSphere Folder and Networking Environment (1)'
+		play_57349dd2["Play: Deploy OBSIDIAN DAGGER VSphere Folder and Networking Environment (1)"]
+		style play_57349dd2 fill:#7f4d5f,color:#ffffff
+		playbook_e7f329b2 --> |"1"| play_57349dd2
+		linkStyle 0 stroke:#7f4d5f,color:#7f4d5f
+			pre_task_657dcc37["[pre_task]  include_vars"]
+			style pre_task_657dcc37 stroke:#7f4d5f,fill:#ffffff
+			play_57349dd2 --> |"1"| pre_task_657dcc37
+			linkStyle 1 stroke:#7f4d5f,color:#7f4d5f
+			pre_task_f90ccd80["[pre_task]  include_vars"]
+			style pre_task_f90ccd80 stroke:#7f4d5f,fill:#ffffff
+			play_57349dd2 --> |"2"| pre_task_f90ccd80
+			linkStyle 2 stroke:#7f4d5f,color:#7f4d5f
+			pre_task_eb9cf5d8["[pre_task]  include_vars"]
+			style pre_task_eb9cf5d8 stroke:#7f4d5f,fill:#ffffff
+			play_57349dd2 --> |"3"| pre_task_eb9cf5d8
+			linkStyle 3 stroke:#7f4d5f,color:#7f4d5f
+			%% Start of the role 'vsphere_init'
+			play_57349dd2 --> |"4"| role_95141b26
+			linkStyle 4 stroke:#7f4d5f,color:#7f4d5f
+			role_95141b26("[role] vsphere_init")
+			style role_95141b26 fill:#7f4d5f,color:#ffffff,stroke:#7f4d5f
+				task_acaac5d2[" vsphere_init : Initialize Terraform Environment"]
+				style task_acaac5d2 stroke:#7f4d5f,fill:#ffffff
+				role_95141b26 --> |"1"| task_acaac5d2
+				linkStyle 5 stroke:#7f4d5f,color:#7f4d5f
+				task_8e9948ed[" vsphere_init : {{ task_title }}"]
+				style task_8e9948ed stroke:#7f4d5f,fill:#ffffff
+				role_95141b26 --> |"2"| task_8e9948ed
+				linkStyle 6 stroke:#7f4d5f,color:#7f4d5f
+			%% End of the role 'vsphere_init'
+		%% End of the play 'Play: Deploy OBSIDIAN DAGGER VSphere Folder and Networking Environment (1)'
+		%% Start of the play 'Play: Deploy Blue/Red Team Service Delivery Point Routers (1)'
+		play_ff446496["Play: Deploy Blue/Red Team Service Delivery Point Routers (1)"]
+		style play_ff446496 fill:#10bc18,color:#ffffff
+		playbook_e7f329b2 --> |"2"| play_ff446496
+		linkStyle 7 stroke:#10bc18,color:#10bc18
+			pre_task_5df0ccd7["[pre_task]  include_vars"]
+			style pre_task_5df0ccd7 stroke:#10bc18,fill:#ffffff
+			play_ff446496 --> |"1"| pre_task_5df0ccd7
+			linkStyle 8 stroke:#10bc18,color:#10bc18
+			pre_task_ae7ea805["[pre_task]  include_vars"]
+			style pre_task_ae7ea805 stroke:#10bc18,fill:#ffffff
+			play_ff446496 --> |"2"| pre_task_ae7ea805
+			linkStyle 9 stroke:#10bc18,color:#10bc18
+			pre_task_daf5c422["[pre_task]  include_vars"]
+			style pre_task_daf5c422 stroke:#10bc18,fill:#ffffff
+			play_ff446496 --> |"3"| pre_task_daf5c422
+			linkStyle 10 stroke:#10bc18,color:#10bc18
+			%% Start of the role 'sdp_deploy'
+			play_ff446496 --> |"4"| role_63a0dce5
+			linkStyle 11 stroke:#10bc18,color:#10bc18
+			role_63a0dce5("[role] sdp_deploy")
+			style role_63a0dce5 fill:#10bc18,color:#ffffff,stroke:#10bc18
+				task_9fb19f3a[" sdp_deploy : Initialize Terraform Environment"]
+				style task_9fb19f3a stroke:#10bc18,fill:#ffffff
+				role_63a0dce5 --> |"1"| task_9fb19f3a
+				linkStyle 12 stroke:#10bc18,color:#10bc18
+				task_c31cc4c1[" sdp_deploy : {{ task_title }}"]
+				style task_c31cc4c1 stroke:#10bc18,fill:#ffffff
+				role_63a0dce5 --> |"2"| task_c31cc4c1
+				linkStyle 13 stroke:#10bc18,color:#10bc18
+			%% End of the role 'sdp_deploy'
+			%% Start of the role 'sdp_configure'
+			play_ff446496 --> |"5"| role_f8bc4139
+			linkStyle 14 stroke:#10bc18,color:#10bc18
+			role_f8bc4139("[role] sdp_configure")
+			style role_f8bc4139 fill:#10bc18,color:#ffffff,stroke:#10bc18
+				task_37b5a2d1[" sdp_configure : Waiting for SDP Routers to be available..."]
+				style task_37b5a2d1 stroke:#10bc18,fill:#ffffff
+				role_f8bc4139 --> |"1"| task_37b5a2d1
+				linkStyle 15 stroke:#10bc18,color:#10bc18
+				task_c0637f03[" sdp_configure : {{ task_title }}"]
+				style task_c0637f03 stroke:#10bc18,fill:#ffffff
+				role_f8bc4139 --> |"2"| task_c0637f03
+				linkStyle 16 stroke:#10bc18,color:#10bc18
+				task_0bc9e656[" sdp_configure : {{ task_title }}"]
+				style task_0bc9e656 stroke:#10bc18,fill:#ffffff
+				role_f8bc4139 --> |"3"| task_0bc9e656
+				linkStyle 17 stroke:#10bc18,color:#10bc18
+			%% End of the role 'sdp_configure'
+		%% End of the play 'Play: Deploy Blue/Red Team Service Delivery Point Routers (1)'
+		%% Start of the play 'Play: Deploy Blue Team Mission Partner Domain Controllers (1)'
+		play_1a4b6c0c["Play: Deploy Blue Team Mission Partner Domain Controllers (1)"]
+		style play_1a4b6c0c fill:#995733,color:#ffffff
+		playbook_e7f329b2 --> |"3"| play_1a4b6c0c
+		linkStyle 18 stroke:#995733,color:#995733
+			pre_task_78862d80["[pre_task]  include_vars"]
+			style pre_task_78862d80 stroke:#995733,fill:#ffffff
+			play_1a4b6c0c --> |"1"| pre_task_78862d80
+			linkStyle 19 stroke:#995733,color:#995733
+			pre_task_e29a0a0d["[pre_task]  include_vars"]
+			style pre_task_e29a0a0d stroke:#995733,fill:#ffffff
+			play_1a4b6c0c --> |"2"| pre_task_e29a0a0d
+			linkStyle 20 stroke:#995733,color:#995733
+			pre_task_64126cde["[pre_task]  include_vars"]
+			style pre_task_64126cde stroke:#995733,fill:#ffffff
+			play_1a4b6c0c --> |"3"| pre_task_64126cde
+			linkStyle 21 stroke:#995733,color:#995733
+			%% Start of the role 'dc_deploy'
+			play_1a4b6c0c --> |"4"| role_34de0866
+			linkStyle 22 stroke:#995733,color:#995733
+			role_34de0866("[role] dc_deploy")
+			style role_34de0866 fill:#995733,color:#ffffff,stroke:#995733
+				task_d510b0bf[" dc_deploy : Initialize Terraform Environment"]
+				style task_d510b0bf stroke:#995733,fill:#ffffff
+				role_34de0866 --> |"1"| task_d510b0bf
+				linkStyle 23 stroke:#995733,color:#995733
+				task_5700ad9c[" dc_deploy : {{ task_title }}"]
+				style task_5700ad9c stroke:#995733,fill:#ffffff
+				role_34de0866 --> |"2"| task_5700ad9c
+				linkStyle 24 stroke:#995733,color:#995733
+			%% End of the role 'dc_deploy'
+			%% Start of the role 'dc_configure'
+			play_1a4b6c0c --> |"5"| role_e33ae347
+			linkStyle 25 stroke:#995733,color:#995733
+			role_e33ae347("[role] dc_configure")
+			style role_e33ae347 fill:#995733,color:#ffffff,stroke:#995733
+				task_d8b22e37[" dc_configure : Waiting for stk-dc-01 to be available..."]
+				style task_d8b22e37 stroke:#995733,fill:#ffffff
+				role_e33ae347 --> |"1"| task_d8b22e37
+				linkStyle 26 stroke:#995733,color:#995733
+				task_0839eabe[" dc_configure : {{ task_title }}"]
+				style task_0839eabe stroke:#995733,fill:#ffffff
+				role_e33ae347 --> |"2"| task_0839eabe
+				linkStyle 27 stroke:#995733,color:#995733
+				task_99a7cfd7[" dc_configure : Waiting for {{ vm }} to restart (Timeout: 5 min)..."]
+				style task_99a7cfd7 stroke:#995733,fill:#ffffff
+				role_e33ae347 --> |"3"| task_99a7cfd7
+				linkStyle 28 stroke:#995733,color:#995733
+				task_fb978ead[" dc_configure : Waiting for {{ vm }} reboot to complete  (Timeout: 5 min)..."]
+				style task_fb978ead stroke:#995733,fill:#ffffff
+				role_e33ae347 --> |"4"| task_fb978ead
+				linkStyle 29 stroke:#995733,color:#995733
+			%% End of the role 'dc_configure'
+			%% Start of the role 'ad_deploy'
+			play_1a4b6c0c --> |"6"| role_8e2a7e37
+			linkStyle 30 stroke:#995733,color:#995733
+			role_8e2a7e37("[role] ad_deploy")
+			style role_8e2a7e37 fill:#995733,color:#ffffff,stroke:#995733
+				task_b55f1263[" ad_deploy : Waiting for stk-dc-01 to be available..."]
+				style task_b55f1263 stroke:#995733,fill:#ffffff
+				role_8e2a7e37 --> |"1"| task_b55f1263
+				linkStyle 31 stroke:#995733,color:#995733
+				task_884c67de[" ad_deploy : {{ task_title }}"]
+				style task_884c67de stroke:#995733,fill:#ffffff
+				role_8e2a7e37 --> |"2"| task_884c67de
+				linkStyle 32 stroke:#995733,color:#995733
+			%% End of the role 'ad_deploy'
+			%% Start of the role 'dns_configure'
+			play_1a4b6c0c --> |"7"| role_0c29f20b
+			linkStyle 33 stroke:#995733,color:#995733
+			role_0c29f20b("[role] dns_configure")
+			style role_0c29f20b fill:#995733,color:#ffffff,stroke:#995733
+				task_535ac5bb[" dns_configure : Waiting for stk-dc-01 to be available..."]
+				style task_535ac5bb stroke:#995733,fill:#ffffff
+				role_0c29f20b --> |"1"| task_535ac5bb
+				linkStyle 34 stroke:#995733,color:#995733
+				task_309c787d[" dns_configure : {{ task_title }}"]
+				style task_309c787d stroke:#995733,fill:#ffffff
+				role_0c29f20b --> |"2"| task_309c787d
+				linkStyle 35 stroke:#995733,color:#995733
+			%% End of the role 'dns_configure'
+			%% Start of the role 'ad_configure'
+			play_1a4b6c0c --> |"8"| role_c793608e
+			linkStyle 36 stroke:#995733,color:#995733
+			role_c793608e("[role] ad_configure")
+			style role_c793608e fill:#995733,color:#ffffff,stroke:#995733
+				task_a1f2e5f7[" ad_configure : Waiting for stk-dc-01 to be available..."]
+				style task_a1f2e5f7 stroke:#995733,fill:#ffffff
+				role_c793608e --> |"1"| task_a1f2e5f7
+				linkStyle 37 stroke:#995733,color:#995733
+				task_507fe827[" ad_configure : {{ task_title }}"]
+				style task_507fe827 stroke:#995733,fill:#ffffff
+				role_c793608e --> |"2"| task_507fe827
+				linkStyle 38 stroke:#995733,color:#995733
+				task_ac9c71ed[" ad_configure : {{ task_title }}"]
+				style task_ac9c71ed stroke:#995733,fill:#ffffff
+				role_c793608e --> |"3"| task_ac9c71ed
+				linkStyle 39 stroke:#995733,color:#995733
+				task_bd4c7873[" ad_configure : {{ task_title }}"]
+				style task_bd4c7873 stroke:#995733,fill:#ffffff
+				role_c793608e --> |"4"| task_bd4c7873
+				linkStyle 40 stroke:#995733,color:#995733
+				task_e48cff67[" ad_configure : {{ task_title }}"]
+				style task_e48cff67 stroke:#995733,fill:#ffffff
+				role_c793608e --> |"5"| task_e48cff67
+				linkStyle 41 stroke:#995733,color:#995733
+			%% End of the role 'ad_configure'
+			%% Start of the role 'dhcp_configure'
+			play_1a4b6c0c --> |"9"| role_1bf621f2
+			linkStyle 42 stroke:#995733,color:#995733
+			role_1bf621f2("[role] dhcp_configure")
+			style role_1bf621f2 fill:#995733,color:#ffffff,stroke:#995733
+				task_8f0b2603[" dhcp_configure : Waiting for stk-dc-01 to be available..."]
+				style task_8f0b2603 stroke:#995733,fill:#ffffff
+				role_1bf621f2 --> |"1"| task_8f0b2603
+				linkStyle 43 stroke:#995733,color:#995733
+				task_a5717878[" dhcp_configure : {{ task_title }}"]
+				style task_a5717878 stroke:#995733,fill:#ffffff
+				role_1bf621f2 --> |"2"| task_a5717878
+				linkStyle 44 stroke:#995733,color:#995733
+			%% End of the role 'dhcp_configure'
+		%% End of the play 'Play: Deploy Blue Team Mission Partner Domain Controllers (1)'
+		%% Start of the play 'Play: Deploy Blue Team Mission Partner Member Servers (1)'
+		play_a767cc56["Play: Deploy Blue Team Mission Partner Member Servers (1)"]
+		style play_a767cc56 fill:#454687,color:#ffffff
+		playbook_e7f329b2 --> |"4"| play_a767cc56
+		linkStyle 45 stroke:#454687,color:#454687
+			pre_task_ebb34e30["[pre_task]  include_vars"]
+			style pre_task_ebb34e30 stroke:#454687,fill:#ffffff
+			play_a767cc56 --> |"1"| pre_task_ebb34e30
+			linkStyle 46 stroke:#454687,color:#454687
+			pre_task_7cfe72da["[pre_task]  include_vars"]
+			style pre_task_7cfe72da stroke:#454687,fill:#ffffff
+			play_a767cc56 --> |"2"| pre_task_7cfe72da
+			linkStyle 47 stroke:#454687,color:#454687
+			pre_task_ff09d3b0["[pre_task]  include_vars"]
+			style pre_task_ff09d3b0 stroke:#454687,fill:#ffffff
+			play_a767cc56 --> |"3"| pre_task_ff09d3b0
+			linkStyle 48 stroke:#454687,color:#454687
+			%% Start of the role 'mbr_server_deploy'
+			play_a767cc56 --> |"4"| role_d122aa28
+			linkStyle 49 stroke:#454687,color:#454687
+			role_d122aa28("[role] mbr_server_deploy")
+			style role_d122aa28 fill:#454687,color:#ffffff,stroke:#454687
+				task_1fb17f05[" mbr_server_deploy : Initialize Terraform Environment"]
+				style task_1fb17f05 stroke:#454687,fill:#ffffff
+				role_d122aa28 --> |"1"| task_1fb17f05
+				linkStyle 50 stroke:#454687,color:#454687
+				task_273a7fea[" mbr_server_deploy : {{ task_title }}"]
+				style task_273a7fea stroke:#454687,fill:#ffffff
+				role_d122aa28 --> |"2"| task_273a7fea
+				linkStyle 51 stroke:#454687,color:#454687
+			%% End of the role 'mbr_server_deploy'
+		%% End of the play 'Play: Deploy Blue Team Mission Partner Member Servers (1)'
+		%% Start of the play 'Play: Deploy Blue Team Mission Partner Client Workstations (1)'
+		play_bfd431f0["Play: Deploy Blue Team Mission Partner Client Workstations (1)"]
+		style play_bfd431f0 fill:#8bb616,color:#ffffff
+		playbook_e7f329b2 --> |"5"| play_bfd431f0
+		linkStyle 52 stroke:#8bb616,color:#8bb616
+			pre_task_1270fdf4["[pre_task]  include_vars"]
+			style pre_task_1270fdf4 stroke:#8bb616,fill:#ffffff
+			play_bfd431f0 --> |"1"| pre_task_1270fdf4
+			linkStyle 53 stroke:#8bb616,color:#8bb616
+			pre_task_e064e6ae["[pre_task]  include_vars"]
+			style pre_task_e064e6ae stroke:#8bb616,fill:#ffffff
+			play_bfd431f0 --> |"2"| pre_task_e064e6ae
+			linkStyle 54 stroke:#8bb616,color:#8bb616
+			pre_task_83b55b55["[pre_task]  include_vars"]
+			style pre_task_83b55b55 stroke:#8bb616,fill:#ffffff
+			play_bfd431f0 --> |"3"| pre_task_83b55b55
+			linkStyle 55 stroke:#8bb616,color:#8bb616
+			%% Start of the role 'dev_deploy'
+			play_bfd431f0 --> |"4"| role_4067e06b
+			linkStyle 56 stroke:#8bb616,color:#8bb616
+			role_4067e06b("[role] dev_deploy")
+			style role_4067e06b fill:#8bb616,color:#ffffff,stroke:#8bb616
+				task_15627688[" dev_deploy : Initialize Terraform Environment"]
+				style task_15627688 stroke:#8bb616,fill:#ffffff
+				role_4067e06b --> |"1"| task_15627688
+				linkStyle 57 stroke:#8bb616,color:#8bb616
+				task_1d6cfdf6[" dev_deploy : {{ task_title }}"]
+				style task_1d6cfdf6 stroke:#8bb616,fill:#ffffff
+				role_4067e06b --> |"2"| task_1d6cfdf6
+				linkStyle 58 stroke:#8bb616,color:#8bb616
+			%% End of the role 'dev_deploy'
+			%% Start of the role 'hr_deploy'
+			play_bfd431f0 --> |"5"| role_2f460bd0
+			linkStyle 59 stroke:#8bb616,color:#8bb616
+			role_2f460bd0("[role] hr_deploy")
+			style role_2f460bd0 fill:#8bb616,color:#ffffff,stroke:#8bb616
+				task_9df966b4[" hr_deploy : Initialize Terraform Environment"]
+				style task_9df966b4 stroke:#8bb616,fill:#ffffff
+				role_2f460bd0 --> |"1"| task_9df966b4
+				linkStyle 60 stroke:#8bb616,color:#8bb616
+				task_9ba4fc93[" hr_deploy : {{ task_title }}"]
+				style task_9ba4fc93 stroke:#8bb616,fill:#ffffff
+				role_2f460bd0 --> |"2"| task_9ba4fc93
+				linkStyle 61 stroke:#8bb616,color:#8bb616
+			%% End of the role 'hr_deploy'
+			%% Start of the role 'rsrch_deploy'
+			play_bfd431f0 --> |"6"| role_eacbcbea
+			linkStyle 62 stroke:#8bb616,color:#8bb616
+			role_eacbcbea("[role] rsrch_deploy")
+			style role_eacbcbea fill:#8bb616,color:#ffffff,stroke:#8bb616
+				task_84da1060[" rsrch_deploy : Initialize Terraform Environment"]
+				style task_84da1060 stroke:#8bb616,fill:#ffffff
+				role_eacbcbea --> |"1"| task_84da1060
+				linkStyle 63 stroke:#8bb616,color:#8bb616
+				task_76b3457f[" rsrch_deploy : {{ task_title }}"]
+				style task_76b3457f stroke:#8bb616,fill:#ffffff
+				role_eacbcbea --> |"2"| task_76b3457f
+				linkStyle 64 stroke:#8bb616,color:#8bb616
+			%% End of the role 'rsrch_deploy'
+			%% Start of the role 'ops_deploy'
+			play_bfd431f0 --> |"7"| role_8aad7afb
+			linkStyle 65 stroke:#8bb616,color:#8bb616
+			role_8aad7afb("[role] ops_deploy")
+			style role_8aad7afb fill:#8bb616,color:#ffffff,stroke:#8bb616
+				task_5c60688d[" ops_deploy : Initialize Terraform Environment"]
+				style task_5c60688d stroke:#8bb616,fill:#ffffff
+				role_8aad7afb --> |"1"| task_5c60688d
+				linkStyle 66 stroke:#8bb616,color:#8bb616
+				task_79a63b8d[" ops_deploy : {{ task_title }}"]
+				style task_79a63b8d stroke:#8bb616,fill:#ffffff
+				role_8aad7afb --> |"2"| task_79a63b8d
+				linkStyle 67 stroke:#8bb616,color:#8bb616
+			%% End of the role 'ops_deploy'
+		%% End of the play 'Play: Deploy Blue Team Mission Partner Client Workstations (1)'
+	%% End of the playbook 'obsidian_dagger/main.yml'
 
 
 ```
