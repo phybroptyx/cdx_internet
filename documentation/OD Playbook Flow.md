@@ -3,7 +3,7 @@
 
 ```mermaid
 ---
-title: Operation: OBSIDIAN DAGGER Deployment Playbook Flow
+title: Operation - OBSIDIAN DAGGER Deployment Playbook Flow
 ---
 %%{ init: { "flowchart": { "curve": "bumpX" } } }%%
 flowchart LR
