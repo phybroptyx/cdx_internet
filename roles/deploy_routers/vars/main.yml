@@ -1,0 +1,27 @@
+---
+core_rtr_1: CORE-T0-R1
+core_rtr_2: CORE-T0-R2
+core_rtr_3: CORE-T0-R3
+tier_1_rtr_ams: IXP-EQIX-2
+tier_1_rtr_syd: IXP-EQIX-3
+tier_1_rtr_sea: IXP-EQIX-4
+tier_1_rtr_tor: IXP-EQIX-5
+tier_1_rtr_de: IXP-EQIX-6
+tier_1_rtr_vlv: IXP-EQIX-7
+tier_1_rtr_dxb: IXP-EQIX-8
+tier_1_rtr_br: IXP-EQIX-9
+tier_1_rtr_icn: IXP-EQIX-10
+tier_1_rtr_lon: IXP-EQIX-11
+core_rtr_1_config: "{{ lookup('ansible.builtin.file', 'files/{{ core_rtr_1 }}') }}"
+core_rtr_2_config: "{{ lookup('ansible.builtin.file', 'files/{{ core_rtr_2 }}') }}"
+core_rtr_3_config: "{{ lookup('ansible.builtin.file', 'files/{{ core_rtr_3 }}') }}"
+tier_1_rtr_ams_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_ams }}') }}"
+tier_1_rtr_syd_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_syd }}') }}"
+tier_1_rtr_sea_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_sea }}') }}"
+tier_1_rtr_tor_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_tor }}') }}"
+tier_1_rtr_de_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_de }}') }}"
+tier_1_rtr_vlv_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_vlv }}') }}"
+tier_1_rtr_dxb_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_dxb }}') }}"
+tier_1_rtr_br_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_br }}') }}"
+tier_1_rtr_icn_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_icn }}') }}"
+tier_1_rtr_lon_config: "{{ lookup('ansible.builtin.file', 'files/{{ tier_1_rtr_lon }}') }}"

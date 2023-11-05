@@ -11,5 +11,5 @@
   with_items:
     - cdx-sus-01.cdx.lab
     - yum-mirror
-    # - apt-mirror
+    - apt-mirror
   delegate_to: localhost

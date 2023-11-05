@@ -1,3 +1,0 @@
----
-- name: Connect KMS Host to CDX-E Network
-  import_tasks: move_kms_to_cdxe.yml

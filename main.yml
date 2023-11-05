@@ -1,36 +1,30 @@
 ---
-- name: Deploy Virtual Internet Infrastructure
+- name: Initialize VSphere Environment
   hosts: localhost
   become: false
-  gather_facts: false
+  gather_facts: true
   pre_tasks:
     - include_vars: global_vars.yml
     - include_vars: vcenter_vars.yml
   roles:
-    - internet_networks
     - vsphere_init
-    - tier_0_routers
-    - tier_1_routers
-    - nstp_config
-    - web_config
-    # - apt_deploy
-    - kms_deploy
-    - nstp_deploy
-    - sus_deploy
-    - web_deploy
-    - yum_deploy
 
-# - name: Tear Down Virtual Internet Infrastructure
-#   hosts: localhost
-#   become: false
-#   gather_facts: false
-#   pre_tasks:
-#     - include_vars: global_vars.yml
-#     - include_vars: vcenter_vars.yml
-#   roles:
-#     - kms_reset
-#     - repo_reset
-#     - teardown_routers
-#     - teardown_servers
-#     - teardown_networks
-#     - teardown_vsphere
+- name: Deploy CDX-E Internet Routing Infrastructure
+  hosts: localhost
+  become: false
+  gather_facts: true
+  pre_tasks:
+    - include_vars: global_vars.yml
+    - include_vars: vcenter_vars.yml
+  roles:
+    - deploy_routers
+
+- name: Deploy CDX-E Internet Services
+  hosts: localhost
+  become: false
+  gather_facts: true
+  pre_tasks:
+    - include_vars: global_vars.yml
+    - include_vars: vcenter_vars.yml
+  roles:
+    - deploy_services

@@ -1,0 +1,76 @@
+---
+- name: Initialize Environment
+  import_tasks: ../common/tasks/terraform_init.yml    # 'terraform init''
+  vars:
+    terraform_folder_var: "{{ terraform_root }}"
+
+- name: Apply Terraform Configuration
+  import_tasks: ../common/tasks/terraform_apply_module.yml    # 'terraform apply''
+  vars:
+    terraform_folder_var: "{{ terraform_root }}"
+    task_title: "Provisioning Internet Routers"
+    module: routers
+
+- name: Wait for Core Routers to be available...
+  community.vmware.vmware_guest_info:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    name: "{{ item }}"
+  delegate_to: localhost
+  register: vm_info
+  until: vm_info.instance.guest_tools_status == "guestToolsRunning"
+  retries: 60
+  delay: 5
+  with_items:
+    - "{{ core_rtr_1 }}"
+    - "{{ core_rtr_2 }}"
+    - "{{ core_rtr_3 }}"
+    - "{{ tier_1_rtr_ams }}"
+    - "{{ tier_1_rtr_syd }}"
+    - "{{ tier_1_rtr_sea }}"
+    - "{{ tier_1_rtr_tor }}"
+    - "{{ tier_1_rtr_de }}"
+    - "{{ tier_1_rtr_vlv }}"
+    - "{{ tier_1_rtr_dxb }}"
+    - "{{ tier_1_rtr_br }}"
+    - "{{ tier_1_rtr_icn }}"
+    - "{{ tier_1_rtr_lon }}"
+
+- name: Configure Internet Routers
+  community.vmware.vmware_vm_shell:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    vm_id: "{{ item.id }}"
+    vm_username: "vyos"
+    vm_password: "vyos"
+    vm_shell: "/bin/vbash"
+    vm_shell_cwd: "/tmp"
+    vm_shell_args: |-
+          -c "source /opt/vyatta/etc/functions/script-template
+          configure
+          {{ item.config }}
+          commit
+          save"
+    wait_for_process: false
+  delegate_to: localhost
+  loop:
+    - { id: "{{ core_rtr_1 }}", config: "{{ core_rtr_1_config }}" }
+    - { id: "{{ core_rtr_2 }}", config: "{{ core_rtr_2_config }}" }
+    - { id: "{{ core_rtr_3 }}", config: "{{ core_rtr_3_config }}" }
+    - { id: "{{ tier_1_rtr_ams }}", config: "{{ tier_1_rtr_ams_config }}" }
+    - { id: "{{ tier_1_rtr_syd }}", config: "{{ tier_1_rtr_syd_config }}" }
+    - { id: "{{ tier_1_rtr_sea }}", config: "{{ tier_1_rtr_sea_config }}" }
+    - { id: "{{ tier_1_rtr_tor }}", config: "{{ tier_1_rtr_tor_config }}" }
+    - { id: "{{ tier_1_rtr_de }}", config: "{{ tier_1_rtr_de_config }}" }
+    - { id: "{{ tier_1_rtr_vlv }}", config: "{{ tier_1_rtr_vlv_config }}" }
+    - { id: "{{ tier_1_rtr_dxb }}", config: "{{ tier_1_rtr_dxb_config }}" }
+    - { id: "{{ tier_1_rtr_br }}", config: "{{ tier_1_rtr_br_config }}" }
+    - { id: "{{ tier_1_rtr_icn }}", config: "{{ tier_1_rtr_icn_config }}" }
+    - { id: "{{ tier_1_rtr_lon }}", config: "{{ tier_1_rtr_lon_config }}" }
+

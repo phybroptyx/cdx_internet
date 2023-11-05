@@ -1,8 +1,0 @@
----
-- name: Initialize Terraform Environment
-  import_tasks: ../common/tasks/terraform_init.yml    # 'terraform init''
-
-- name: Destroy Terraform Configuration
-  import_tasks: ../common/tasks/terraform_destroy.yml    # 'terraform destroy''
-  vars:
-    task_title: "VSphere Internet Networks"

@@ -1,0 +1,95 @@
+---
+- name: Connect Internet services to CDX-E Network
+  community.vmware.vmware_guest_network:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    name: "{{ item.name}}"
+    mac_address: "{{ item.mac }}"
+    network_name: "{{ item.network }}"
+    state: present
+  loop:
+    - { name: apt-mirror, mac: 00:50:56:9d:ae:8e, network: "CDX - Tier 2 - Toronto" }
+    - { name: cdx-docker.cdx.lab, mac: 00:50:56:9d:a3:5b, network: "CDX - Tier 2 - Seattle" }
+    - { name: cdx-sus-01.cdx.lab, mac: 00:0c:29:ec:65:53, network: "CDX - Tier 2 - Seattle" }
+    - { name: yum-mirror, mac: 00:50:56:9d:ae:8e, network: "CDX - Tier 2 - Amsterdam" }
+
+- name: Move Internet services VMs to Internet Servers VSphere Folder
+  community.vmware.vmware_guest_move:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ vcenter_validate_certs }}"
+    datacenter: "{{ vcenter_datacenter }}"
+    name: "{{ item }}"
+    dest_folder: "/{{ vcenter_datacenter }}/vm/CDX Environment/Internet/Servers"
+  delegate_to: localhost
+  with_items:
+    - apt-mirror
+    - cdx-sus-01.cdx.lab
+    - yum-mirror
+
+- name: Initialize Terraform Environment
+  import_tasks: ../common/tasks/terraform_init.yml    # 'terraform init''
+  vars:
+    terraform_folder_var: "{{ terraform_root }}"
+
+- name: Apply Terraform Configuration
+  import_tasks: ../common/tasks/terraform_apply_module.yml    # 'terraform apply''
+  vars:
+    terraform_folder_var: "{{ terraform_root }}"
+    task_title: "Internet NSTP and Web Servers"
+    module: servers
+
+- name: Verify API connectivity to VMTools on Internet NSTP Server
+  import_tasks: ../../common/tasks/wait_for_vm_tools.yml
+  vars:
+    vm: cdx-nstp-01
+
+- name: Apply server configuration to Internet NTP/DNS Server
+  import_tasks: win_configure_server.yml    # Apply Server Configuration
+  vars:
+    vm: cdx-nstp-01
+    server_config: "{{ nstp_config }}"
+    task_title: "Apply server configuration to Internet NTP/DNS Server"
+    errors: true
+
+- name: Install DNS on Internet NTP/DNS Server
+  import_tasks: ../../common/tasks/win_windows_feature_install.yml
+  vars:
+    vm: cdx-nstp-01
+    win_feature: "DNS -IncludeManagementTools"
+    win_feature_name: "DNS Server"
+
+- name: Configuring DNS on Internet NTP/DNS Server
+  import_tasks: win_configure_server.yml    # Apply Server Configuration
+  vars:
+    vm: cdx-nstp-01
+    server_config: "{{ dns_config }}"
+    task_title: "Configuring DNS on Internet NTP/DNS Server"
+    errors: true
+
+- name: Verify API connectivity to VMTools on Internet Web Server
+  import_tasks: ../../common/tasks/wait_for_vm_tools.yml
+  vars:
+    vm: cdx-web-01
+
+- name: Apply server configuration to Internet Web Server
+  import_tasks: win_configure_server.yml    # Apply Server Configuration
+  vars:
+    vm: cdx-web-01
+    server_config: "{{ web_config }}"
+    task_title: "Apply server configuration to Internet Web Server"
+    errors: 
+
+- name: Activate Internet NSTP Server's Windows Operating System...
+  import_tasks: ../../common/tasks/win_activate_windows.yml
+  vars:
+    vm: cdx-nstp-01
+
+- name: Activate Internet Web Server's Windows Operating System...
+  import_tasks: ../../common/tasks/win_activate_windows.yml
+  vars:
+    vm: cdx-web-01

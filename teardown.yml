@@ -1,0 +1,12 @@
+---
+- name: Tear Down Virtual Internet Infrastructure
+  hosts: localhost
+  become: false
+  gather_facts: true
+  pre_tasks:
+    - include_vars: global_vars.yml
+    - include_vars: vcenter_vars.yml
+  roles:
+    - kms_reset
+    - repo_reset
+    - teardown_vsphere

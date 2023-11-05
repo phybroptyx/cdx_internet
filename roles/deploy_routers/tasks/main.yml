@@ -1,0 +1,3 @@
+---
+- name: Deploy Internet Routers"
+  import_tasks: deploy_routers.yml   # Notes

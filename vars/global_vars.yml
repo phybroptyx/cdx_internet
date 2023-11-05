@@ -1,3 +1,7 @@
 # GLOBAL VARIABLES
 
-terraform_root: files/Terraform/CDX
+terraform_root: "tf"
+# internet_root_path: "./roles/internet_deploy/tf"
+nstp_config: "{{ lookup('ansible.builtin.file', 'files/NSTP_Config.ps1') }}"
+web_config: "{{ lookup('ansible.builtin.file', 'files/Web_Config.ps1') }}"
+dns_config: "{{ lookup('ansible.builtin.file', 'files/DNS_Config.ps1') }}"

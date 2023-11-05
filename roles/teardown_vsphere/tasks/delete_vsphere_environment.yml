@@ -1,0 +1,21 @@
+---
+- name: Destroy CDX-E Internet Servers
+  import_tasks: ../common/tasks/terraform_destroy_module.yml    # 'terraform destroy''
+  vars:
+    terraform_folder_var: "{{ terraform_root }}"
+    task_title: "Destroy CDX-E Internet Servers"
+    module: servers
+
+- name: Destroy CDX-E Internet Routers
+  import_tasks: ../common/tasks/terraform_destroy_module.yml    # 'terraform destroy''
+  vars:
+    terraform_folder_var: "{{ terraform_root }}"
+    task_title: "Destroy CDX-E Internet Routers"
+    module: routers
+
+- name: Destroy CDX-E Internet Terraform Environment
+  import_tasks: ../common/tasks/terraform_destroy_module.yml    # 'terraform destroy''
+  vars:
+    terraform_folder_var: "{{ terraform_root }}"
+    task_title: "Destroy Virtual Environment"
+    module: environment
