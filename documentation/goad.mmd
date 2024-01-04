@@ -1,0 +1,1253 @@
+---
+title: Ansible Playbook Grapher
+---
+%%{ init: { "flowchart": { "curve": "bumpX" } } }%%
+flowchart LR
+	%% Start of the playbook 'goad/main.yml'
+	playbook_1af32815("goad/main.yml")
+		%% Start of the play 'Play: Read data files (0)'
+		play_21b5c383["Play: Read data files (0)"]
+		style play_21b5c383 fill:#0f0dbf,color:#ffffff
+		playbook_1af32815 --> |"1"| play_21b5c383
+		linkStyle 0 stroke:#0f0dbf,color:#0f0dbf
+			task_aa9e53c2["[task]  save the Json data to a Variable as a Fact"]
+			style task_aa9e53c2 stroke:#0f0dbf,fill:#ffffff
+			play_21b5c383 --> |"1"| task_aa9e53c2
+			linkStyle 1 stroke:#0f0dbf,color:#0f0dbf
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: build all (0)'
+		play_62d95532["Play: build all (0)"]
+		style play_62d95532 fill:#336099,color:#ffffff
+		playbook_1af32815 --> |"2"| play_62d95532
+		linkStyle 2 stroke:#336099,color:#336099
+			%% Start of the role 'common'
+			play_62d95532 --> |"1"| role_a981eeb4
+			linkStyle 3 stroke:#336099,color:#336099
+			role_a981eeb4("[role] common")
+			style role_a981eeb4 fill:#336099,color:#ffffff,stroke:#336099
+				task_dde24043[" common : Force a DNS on the adapter {{nat_adapter}}"]
+				style task_dde24043 stroke:#336099,fill:#ffffff
+				role_a981eeb4 --> |"1 [when: force_dns_server == 'yes']"| task_dde24043
+				linkStyle 4 stroke:#336099,color:#336099
+				task_2eebc843[" common : Set a proxy for specific protocols"]
+				style task_2eebc843 stroke:#336099,fill:#ffffff
+				role_a981eeb4 --> |"2 [when: http_proxy == 'yes']"| task_2eebc843
+				linkStyle 5 stroke:#336099,color:#336099
+				task_aa4327c4[" common : Configure IE to use a specific proxy per protocol"]
+				style task_aa4327c4 stroke:#336099,fill:#ffffff
+				role_a981eeb4 --> |"3 [when: http_proxy == 'yes']"| task_aa4327c4
+				linkStyle 6 stroke:#336099,color:#336099
+				task_d2525ca3[" common : Upgrade module PowerShellGet to fix accept license issue on last windows ansible version"]
+				style task_d2525ca3 stroke:#336099,fill:#ffffff
+				role_a981eeb4 --> |"4"| task_d2525ca3
+				linkStyle 7 stroke:#336099,color:#336099
+				task_05d99da1[" common : Windows | Check for ComputerManagementDsc Powershell module"]
+				style task_05d99da1 stroke:#336099,fill:#ffffff
+				role_a981eeb4 --> |"5"| task_05d99da1
+				linkStyle 8 stroke:#336099,color:#336099
+				task_a51645ac[" common : Windows | Enable Remote Desktop"]
+				style task_a51645ac stroke:#336099,fill:#ffffff
+				role_a981eeb4 --> |"6"| task_a51645ac
+				linkStyle 9 stroke:#336099,color:#336099
+				task_6146cf0a[" common : Windows | Check for xNetworking Powershell module"]
+				style task_6146cf0a stroke:#336099,fill:#ffffff
+				role_a981eeb4 --> |"7"| task_6146cf0a
+				linkStyle 10 stroke:#336099,color:#336099
+				task_7319fea0[" common : Firewall | Allow RDP through Firewall"]
+				style task_7319fea0 stroke:#336099,fill:#ffffff
+				role_a981eeb4 --> |"8"| task_7319fea0
+				linkStyle 11 stroke:#336099,color:#336099
+			%% End of the role 'common'
+			%% Start of the role 'settings/keyboard'
+			play_62d95532 --> |"2"| role_696e904b
+			linkStyle 12 stroke:#336099,color:#336099
+			role_696e904b("[role] settings/keyboard")
+			style role_696e904b fill:#336099,color:#ffffff,stroke:#336099
+				task_94a850c7[" settings/keyboard : Windows | Add the fr keyboard layout"]
+				style task_94a850c7 stroke:#336099,fill:#ffffff
+				role_696e904b --> |"1"| task_94a850c7
+				linkStyle 13 stroke:#336099,color:#336099
+			%% End of the role 'settings/keyboard'
+		%% End of the play 'Play: build all (0)'
+		%% Start of the play 'Play: build all no update (0)'
+		play_fa36d743["Play: build all no update (0)"]
+		style play_fa36d743 fill:#08c42e,color:#ffffff
+		playbook_1af32815 --> |"3"| play_fa36d743
+		linkStyle 14 stroke:#08c42e,color:#08c42e
+			%% Start of the role 'settings/no_updates'
+			play_fa36d743 --> |"1"| role_10c019cf
+			linkStyle 15 stroke:#08c42e,color:#08c42e
+			role_10c019cf("[role] settings/no_updates")
+			style role_10c019cf fill:#08c42e,color:#ffffff,stroke:#08c42e
+				task_8c954590[" settings/no_updates : Disable windows update"]
+				style task_8c954590 stroke:#08c42e,fill:#ffffff
+				role_10c019cf --> |"1"| task_8c954590
+				linkStyle 16 stroke:#08c42e,color:#08c42e
+			%% End of the role 'settings/no_updates'
+		%% End of the play 'Play: build all no update (0)'
+		%% Start of the play 'Play: Launch windows updates before continue (0)'
+		play_be98f68d["Play: Launch windows updates before continue (0)"]
+		style play_be98f68d fill:#1fad85,color:#ffffff
+		playbook_1af32815 --> |"4"| play_be98f68d
+		linkStyle 17 stroke:#1fad85,color:#1fad85
+			%% Start of the role 'settings/updates'
+			play_be98f68d --> |"1"| role_5c1d6a27
+			linkStyle 18 stroke:#1fad85,color:#1fad85
+			role_5c1d6a27("[role] settings/updates")
+			style role_5c1d6a27 fill:#1fad85,color:#ffffff,stroke:#1fad85
+			%% End of the role 'settings/updates'
+		%% End of the play 'Play: Launch windows updates before continue (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_41367ef7["Play: Read data files (0)"]
+		style play_41367ef7 fill:#3a5c92,color:#ffffff
+		playbook_1af32815 --> |"5"| play_41367ef7
+		linkStyle 19 stroke:#3a5c92,color:#3a5c92
+			task_99bc40c2["[task]  save the Json data to a Variable as a Fact"]
+			style task_99bc40c2 stroke:#3a5c92,fill:#ffffff
+			play_41367ef7 --> |"1"| task_99bc40c2
+			linkStyle 20 stroke:#3a5c92,color:#3a5c92
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: Prepare servers set admin password, set hostname (0)'
+		play_47acd61b["Play: Prepare servers set admin password, set hostname (0)"]
+		style play_47acd61b fill:#5d29a3,color:#ffffff
+		playbook_1af32815 --> |"6"| play_47acd61b
+		linkStyle 21 stroke:#5d29a3,color:#5d29a3
+			%% Start of the role 'settings/admin_password'
+			play_47acd61b --> |"1"| role_4cb5d987
+			linkStyle 22 stroke:#5d29a3,color:#5d29a3
+			role_4cb5d987("[role] settings/admin_password")
+			style role_4cb5d987 fill:#5d29a3,color:#ffffff,stroke:#5d29a3
+				task_3f80cfd7[" settings/admin_password : Ensure that Admin is present with a valid password"]
+				style task_3f80cfd7 stroke:#5d29a3,fill:#ffffff
+				role_4cb5d987 --> |"1"| task_3f80cfd7
+				linkStyle 23 stroke:#5d29a3,color:#5d29a3
+				task_d3ff28bf[" settings/admin_password : Create administrator home directory"]
+				style task_d3ff28bf stroke:#5d29a3,fill:#ffffff
+				role_4cb5d987 --> |"2"| task_d3ff28bf
+				linkStyle 24 stroke:#5d29a3,color:#5d29a3
+			%% End of the role 'settings/admin_password'
+			%% Start of the role 'settings/hostname'
+			play_47acd61b --> |"2"| role_a297a29d
+			linkStyle 25 stroke:#5d29a3,color:#5d29a3
+			role_a297a29d("[role] settings/hostname")
+			style role_a297a29d fill:#5d29a3,color:#ffffff,stroke:#5d29a3
+				task_0649fa33[" settings/hostname : Change the hostname"]
+				style task_0649fa33 stroke:#5d29a3,fill:#ffffff
+				role_a297a29d --> |"1"| task_0649fa33
+				linkStyle 26 stroke:#5d29a3,color:#5d29a3
+				task_53cae7ac[" settings/hostname : Reboot if needed"]
+				style task_53cae7ac stroke:#5d29a3,fill:#ffffff
+				role_a297a29d --> |"2 [when: win_hostname.reboot_required]"| task_53cae7ac
+				linkStyle 27 stroke:#5d29a3,color:#5d29a3
+			%% End of the role 'settings/hostname'
+		%% End of the play 'Play: Prepare servers set admin password, set hostname (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_9cbc6898["Play: Read data files (0)"]
+		style play_9cbc6898 fill:#1ab27e,color:#ffffff
+		playbook_1af32815 --> |"7"| play_9cbc6898
+		linkStyle 28 stroke:#1ab27e,color:#1ab27e
+			task_43fa9c90["[task]  save the Json data to a Variable as a Fact"]
+			style task_43fa9c90 stroke:#1ab27e,fill:#ffffff
+			play_9cbc6898 --> |"1"| task_43fa9c90
+			linkStyle 29 stroke:#1ab27e,color:#1ab27e
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: Main DC AD configuration (0)'
+		play_462bc8d5["Play: Main DC AD configuration (0)"]
+		style play_462bc8d5 fill:#ac0ac2,color:#ffffff
+		playbook_1af32815 --> |"8"| play_462bc8d5
+		linkStyle 30 stroke:#ac0ac2,color:#ac0ac2
+			%% Start of the role 'domain_controller'
+			play_462bc8d5 --> |"1"| role_577c70c0
+			linkStyle 31 stroke:#ac0ac2,color:#ac0ac2
+			role_577c70c0("[role] domain_controller")
+			style role_577c70c0 fill:#ac0ac2,color:#ffffff,stroke:#ac0ac2
+				task_7ef61b38[" domain_controller : disable the registration of the {{nat_adapter}} interface (NAT address) in DNS"]
+				style task_7ef61b38 stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"1 [when: two_adapters == 'yes']"| task_7ef61b38
+				linkStyle 32 stroke:#ac0ac2,color:#ac0ac2
+				task_b5bcf88e[" domain_controller : Ensure that domain exists"]
+				style task_b5bcf88e stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"2"| task_b5bcf88e
+				linkStyle 33 stroke:#ac0ac2,color:#ac0ac2
+				task_2816237e[" domain_controller : Reboot to complete domain creation"]
+				style task_2816237e stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"3 [when: check_domain.changed]"| task_2816237e
+				linkStyle 34 stroke:#ac0ac2,color:#ac0ac2
+				task_cf7819ad[" domain_controller : Ensure the server is a domain controller"]
+				style task_cf7819ad stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"4"| task_cf7819ad
+				linkStyle 35 stroke:#ac0ac2,color:#ac0ac2
+				task_66da3783[" domain_controller : Reboot to complete domain controller setup"]
+				style task_66da3783 stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"5 [when: check_domain_controller.changed]"| task_66da3783
+				linkStyle 36 stroke:#ac0ac2,color:#ac0ac2
+				task_93e8e396[" domain_controller : Check for xDnsServer Powershell module"]
+				style task_93e8e396 stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"6"| task_93e8e396
+				linkStyle 37 stroke:#ac0ac2,color:#ac0ac2
+				task_ff1d7f2f[" domain_controller : enable only the {{domain_adapter}} interface (local) for DNS client requests"]
+				style task_ff1d7f2f stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"7 [when: two_adapters == 'yes']"| task_ff1d7f2f
+				linkStyle 38 stroke:#ac0ac2,color:#ac0ac2
+				task_cc69e497[" domain_controller : Configure DNS Forwarders"]
+				style task_cc69e497 stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"8"| task_cc69e497
+				linkStyle 39 stroke:#ac0ac2,color:#ac0ac2
+				task_2a5859ae[" domain_controller : Install XactiveDirectory"]
+				style task_2a5859ae stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"9"| task_2a5859ae
+				linkStyle 40 stroke:#ac0ac2,color:#ac0ac2
+				task_f61d6fd9[" domain_controller : Ensure Administrator is part of Enterprise Admins"]
+				style task_f61d6fd9 stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"10"| task_f61d6fd9
+				linkStyle 41 stroke:#ac0ac2,color:#ac0ac2
+				task_8f2978a3[" domain_controller : Ensure Administrator is part of Domain Admins"]
+				style task_8f2978a3 stroke:#ac0ac2,fill:#ffffff
+				role_577c70c0 --> |"11"| task_8f2978a3
+				linkStyle 42 stroke:#ac0ac2,color:#ac0ac2
+			%% End of the role 'domain_controller'
+		%% End of the play 'Play: Main DC AD configuration (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_3382b6f7["Play: Read data files (0)"]
+		style play_3382b6f7 fill:#23a973,color:#ffffff
+		playbook_1af32815 --> |"9"| play_3382b6f7
+		linkStyle 43 stroke:#23a973,color:#23a973
+			task_0ec6ba77["[task]  save the Json data to a Variable as a Fact"]
+			style task_0ec6ba77 stroke:#23a973,fill:#ffffff
+			play_3382b6f7 --> |"1"| task_0ec6ba77
+			linkStyle 44 stroke:#23a973,color:#23a973
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: Child DC AD configuration (0)'
+		play_4b0baec2["Play: Child DC AD configuration (0)"]
+		style play_4b0baec2 fill:#17b56d,color:#ffffff
+		playbook_1af32815 --> |"10"| play_4b0baec2
+		linkStyle 45 stroke:#17b56d,color:#17b56d
+			%% Start of the role 'child_domain'
+			play_4b0baec2 --> |"1"| role_c50d6bad
+			linkStyle 46 stroke:#17b56d,color:#17b56d
+			role_c50d6bad("[role] child_domain")
+			style role_c50d6bad fill:#17b56d,color:#ffffff,stroke:#17b56d
+				task_921e3a43[" child_domain : disable the registration of the {{nat_adapter}} interface (NAT address) in DNS"]
+				style task_921e3a43 stroke:#17b56d,fill:#ffffff
+				role_c50d6bad --> |"1 [when: two_adapters == 'yes']"| task_921e3a43
+				linkStyle 47 stroke:#17b56d,color:#17b56d
+				task_153cac72[" child_domain : Set configure dns to {{dns_domain}}"]
+				style task_153cac72 stroke:#17b56d,fill:#ffffff
+				role_c50d6bad --> |"2"| task_153cac72
+				linkStyle 48 stroke:#17b56d,color:#17b56d
+				task_8efbd64a[" child_domain : Install windows features - AD Domain Services"]
+				style task_8efbd64a stroke:#17b56d,fill:#ffffff
+				role_c50d6bad --> |"3"| task_8efbd64a
+				linkStyle 49 stroke:#17b56d,color:#17b56d
+				task_e0233a9f[" child_domain : Install windows features - RSAT-ADDS"]
+				style task_e0233a9f stroke:#17b56d,fill:#ffffff
+				role_c50d6bad --> |"4"| task_e0233a9f
+				linkStyle 50 stroke:#17b56d,color:#17b56d
+				task_6a0601aa[" child_domain : add child domain to parent domain"]
+				style task_6a0601aa stroke:#17b56d,fill:#ffffff
+				role_c50d6bad --> |"5"| task_6a0601aa
+				linkStyle 51 stroke:#17b56d,color:#17b56d
+				task_820ceee5[" child_domain : Reboot"]
+				style task_820ceee5 stroke:#17b56d,fill:#ffffff
+				role_c50d6bad --> |"6 [when: child_result.changed]"| task_820ceee5
+				linkStyle 52 stroke:#17b56d,color:#17b56d
+				task_8f20dbb6[" child_domain : enable the {{domain_adapter}} interface (local) for DNS client requests"]
+				style task_8f20dbb6 stroke:#17b56d,fill:#ffffff
+				role_c50d6bad --> |"7 [when: two_adapters == 'yes']"| task_8f20dbb6
+				linkStyle 53 stroke:#17b56d,color:#17b56d
+				task_7d209c5e[" child_domain : Install XactiveDirectory"]
+				style task_7d209c5e stroke:#17b56d,fill:#ffffff
+				role_c50d6bad --> |"8"| task_7d209c5e
+				linkStyle 54 stroke:#17b56d,color:#17b56d
+			%% End of the role 'child_domain'
+			%% Start of the role 'dns_conditional_forwarder'
+			play_4b0baec2 --> |"2"| role_4b6b0333
+			linkStyle 55 stroke:#17b56d,color:#17b56d
+			role_4b6b0333("[role] dns_conditional_forwarder")
+			style role_4b6b0333 fill:#17b56d,color:#ffffff,stroke:#17b56d
+				task_3608f7e9[" dns_conditional_forwarder : Add dns server zone"]
+				style task_3608f7e9 stroke:#17b56d,fill:#ffffff
+				role_4b6b0333 --> |"1"| task_3608f7e9
+				linkStyle 56 stroke:#17b56d,color:#17b56d
+			%% End of the role 'dns_conditional_forwarder'
+		%% End of the play 'Play: Child DC AD configuration (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_f1ff2336["Play: Read data files (0)"]
+		style play_f1ff2336 fill:#1d69af,color:#ffffff
+		playbook_1af32815 --> |"11"| play_f1ff2336
+		linkStyle 57 stroke:#1d69af,color:#1d69af
+			task_a7a65802["[task]  save the Json data to a Variable as a Fact"]
+			style task_a7a65802 stroke:#1d69af,fill:#ffffff
+			play_f1ff2336 --> |"1"| task_a7a65802
+			linkStyle 58 stroke:#1d69af,color:#1d69af
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: play servers AD configuration (0)'
+		play_7f07b5de["Play: play servers AD configuration (0)"]
+		style play_7f07b5de fill:#09c3a5,color:#ffffff
+		playbook_1af32815 --> |"12"| play_7f07b5de
+		linkStyle 59 stroke:#09c3a5,color:#09c3a5
+			%% Start of the role 'member_server'
+			play_7f07b5de --> |"1"| role_71755ad2
+			linkStyle 60 stroke:#09c3a5,color:#09c3a5
+			role_71755ad2("[role] member_server")
+			style role_71755ad2 fill:#09c3a5,color:#ffffff,stroke:#09c3a5
+				task_6f8c49d3[" member_server : prioritize the {{domain_adapter}} interface (local) as the default for routing"]
+				style task_6f8c49d3 stroke:#09c3a5,fill:#ffffff
+				role_71755ad2 --> |"1 [when: two_adapters == 'yes']"| task_6f8c49d3
+				linkStyle 61 stroke:#09c3a5,color:#09c3a5
+				task_765e7e1b[" member_server : Set configure dns to {{dns_domain}}"]
+				style task_765e7e1b stroke:#09c3a5,fill:#ffffff
+				role_71755ad2 --> |"2"| task_765e7e1b
+				linkStyle 62 stroke:#09c3a5,color:#09c3a5
+				task_c63563c2[" member_server : Verify File Server Role is installed."]
+				style task_c63563c2 stroke:#09c3a5,fill:#ffffff
+				role_71755ad2 --> |"3"| task_c63563c2
+				linkStyle 63 stroke:#09c3a5,color:#09c3a5
+				task_ddd545b6[" member_server : Add member server"]
+				style task_ddd545b6 stroke:#09c3a5,fill:#ffffff
+				role_71755ad2 --> |"4"| task_ddd545b6
+				linkStyle 64 stroke:#09c3a5,color:#09c3a5
+				task_5cce7eae[" member_server : Reboot if needed"]
+				style task_5cce7eae stroke:#09c3a5,fill:#ffffff
+				role_71755ad2 --> |"5 [when: domain_state.reboot_required]"| task_5cce7eae
+				linkStyle 65 stroke:#09c3a5,color:#09c3a5
+			%% End of the role 'member_server'
+		%% End of the play 'Play: play servers AD configuration (0)'
+		%% Start of the play 'Play: play workstations AD configuration (0)'
+		play_8fa11000["Play: play workstations AD configuration (0)"]
+		style play_8fa11000 fill:#39ca02,color:#ffffff
+		playbook_1af32815 --> |"13"| play_8fa11000
+		linkStyle 66 stroke:#39ca02,color:#39ca02
+			%% Start of the role 'commonwkstn'
+			play_8fa11000 --> |"1"| role_908f54a1
+			linkStyle 67 stroke:#39ca02,color:#39ca02
+			role_908f54a1("[role] commonwkstn")
+			style role_908f54a1 fill:#39ca02,color:#ffffff,stroke:#39ca02
+				task_711e5c3c[" commonwkstn : prioritize the {{domain_adapter}} interface (local) as the default for routing"]
+				style task_711e5c3c stroke:#39ca02,fill:#ffffff
+				role_908f54a1 --> |"1 [when: two_adapters == 'yes']"| task_711e5c3c
+				linkStyle 68 stroke:#39ca02,color:#39ca02
+				task_bccbaba5[" commonwkstn : Set configure dns to {{dns_domain}}"]
+				style task_bccbaba5 stroke:#39ca02,fill:#ffffff
+				role_908f54a1 --> |"2"| task_bccbaba5
+				linkStyle 69 stroke:#39ca02,color:#39ca02
+				task_3caa8746[" commonwkstn : Add workstation to {{member_domain}}"]
+				style task_3caa8746 stroke:#39ca02,fill:#ffffff
+				role_908f54a1 --> |"3"| task_3caa8746
+				linkStyle 70 stroke:#39ca02,color:#39ca02
+				task_dc2162e6[" commonwkstn : Reboot if needed"]
+				style task_dc2162e6 stroke:#39ca02,fill:#ffffff
+				role_908f54a1 --> |"4 [when: domain_state.reboot_required]"| task_dc2162e6
+				linkStyle 71 stroke:#39ca02,color:#39ca02
+			%% End of the role 'commonwkstn'
+		%% End of the play 'Play: play workstations AD configuration (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_3b83e936["Play: Read data files (0)"]
+		style play_3b83e936 fill:#20aca8,color:#ffffff
+		playbook_1af32815 --> |"14"| play_3b83e936
+		linkStyle 72 stroke:#20aca8,color:#20aca8
+			task_bf9b0350["[task]  save the Json data to a Variable as a Fact"]
+			style task_bf9b0350 stroke:#20aca8,fill:#ffffff
+			play_3b83e936 --> |"1"| task_bf9b0350
+			linkStyle 73 stroke:#20aca8,color:#20aca8
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: Trusts configuration prepare (0)'
+		play_f5c7c16f["Play: Trusts configuration prepare (0)"]
+		style play_f5c7c16f fill:#58408c,color:#ffffff
+		playbook_1af32815 --> |"15"| play_f5c7c16f
+		linkStyle 74 stroke:#58408c,color:#58408c
+			%% Start of the role 'settings/disable_nat_adapter'
+			play_f5c7c16f --> |"1"| role_10817cf3
+			linkStyle 75 stroke:#58408c,color:#58408c
+			role_10817cf3("[role] settings/disable_nat_adapter")
+			style role_10817cf3 fill:#58408c,color:#ffffff,stroke:#58408c
+				task_0dc5e8cf[" settings/disable_nat_adapter : disable interface {{nat_adapter}}"]
+				style task_0dc5e8cf stroke:#58408c,fill:#ffffff
+				role_10817cf3 --> |"1 [when: two_adapters == 'yes']"| task_0dc5e8cf
+				linkStyle 76 stroke:#58408c,color:#58408c
+			%% End of the role 'settings/disable_nat_adapter'
+			%% Start of the role 'dns_conditional_forwarder'
+			play_f5c7c16f --> |"2"| role_bb94972d
+			linkStyle 77 stroke:#58408c,color:#58408c
+			role_bb94972d("[role] dns_conditional_forwarder")
+			style role_bb94972d fill:#58408c,color:#ffffff,stroke:#58408c
+				task_2ec9765f[" dns_conditional_forwarder : Add dns server zone"]
+				style task_2ec9765f stroke:#58408c,fill:#ffffff
+				role_bb94972d --> |"1"| task_2ec9765f
+				linkStyle 78 stroke:#58408c,color:#58408c
+			%% End of the role 'dns_conditional_forwarder'
+		%% End of the play 'Play: Trusts configuration prepare (0)'
+		%% Start of the play 'Play: Trusts configuration (0)'
+		play_271a009a["Play: Trusts configuration (0)"]
+		style play_271a009a fill:#84c507,color:#ffffff
+		playbook_1af32815 --> |"16"| play_271a009a
+		linkStyle 79 stroke:#84c507,color:#84c507
+			%% Start of the role 'trusts'
+			play_271a009a --> |"1"| role_a2381f24
+			linkStyle 80 stroke:#84c507,color:#84c507
+			role_a2381f24("[role] trusts")
+			style role_a2381f24 fill:#84c507,color:#ffffff,stroke:#84c507
+				task_3240dec1[" trusts : Prepare to trust flush and renew dns"]
+				style task_3240dec1 stroke:#84c507,fill:#ffffff
+				role_a2381f24 --> |"1"| task_3240dec1
+				linkStyle 81 stroke:#84c507,color:#84c507
+				task_3ad590b9[" trusts : Add trusts between domain"]
+				style task_3ad590b9 stroke:#84c507,fill:#ffffff
+				role_a2381f24 --> |"2"| task_3ad590b9
+				linkStyle 82 stroke:#84c507,color:#84c507
+				task_86c77c1c[" trusts : Reboot and wait for the AD system to restart"]
+				style task_86c77c1c stroke:#84c507,fill:#ffffff
+				role_a2381f24 --> |"3 [when: trust_result.changed]"| task_86c77c1c
+				linkStyle 83 stroke:#84c507,color:#84c507
+				task_4c2e70a3[" trusts : Show trust result"]
+				style task_4c2e70a3 stroke:#84c507,fill:#ffffff
+				role_a2381f24 --> |"4"| task_4c2e70a3
+				linkStyle 84 stroke:#84c507,color:#84c507
+			%% End of the role 'trusts'
+		%% End of the play 'Play: Trusts configuration (0)'
+		%% Start of the play 'Play: Trusts configuration end (0)'
+		play_8a6350f6["Play: Trusts configuration end (0)"]
+		style play_8a6350f6 fill:#6b02ca,color:#ffffff
+		playbook_1af32815 --> |"17"| play_8a6350f6
+		linkStyle 85 stroke:#6b02ca,color:#6b02ca
+			%% Start of the role 'settings/enable_nat_adapter'
+			play_8a6350f6 --> |"1"| role_3ca0b06d
+			linkStyle 86 stroke:#6b02ca,color:#6b02ca
+			role_3ca0b06d("[role] settings/enable_nat_adapter")
+			style role_3ca0b06d fill:#6b02ca,color:#ffffff,stroke:#6b02ca
+				task_819bf892[" settings/enable_nat_adapter : enable interface {{nat_adapter}}"]
+				style task_819bf892 stroke:#6b02ca,fill:#ffffff
+				role_3ca0b06d --> |"1 [when: two_adapters == 'yes']"| task_819bf892
+				linkStyle 87 stroke:#6b02ca,color:#6b02ca
+			%% End of the role 'settings/enable_nat_adapter'
+		%% End of the play 'Play: Trusts configuration end (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_ceafb1a3["Play: Read data files (0)"]
+		style play_ceafb1a3 fill:#1430b8,color:#ffffff
+		playbook_1af32815 --> |"18"| play_ceafb1a3
+		linkStyle 88 stroke:#1430b8,color:#1430b8
+			task_ffe9d6af["[task]  save the Json data to a Variable as a Fact"]
+			style task_ffe9d6af stroke:#1430b8,fill:#ffffff
+			play_ceafb1a3 --> |"1"| task_ffe9d6af
+			linkStyle 89 stroke:#1430b8,color:#1430b8
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: DCs AD data configuration (0)'
+		play_3b601cb9["Play: DCs AD data configuration (0)"]
+		style play_3b601cb9 fill:#04c875,color:#ffffff
+		playbook_1af32815 --> |"19"| play_3b601cb9
+		linkStyle 90 stroke:#04c875,color:#04c875
+			%% Start of the role 'password_policy'
+			play_3b601cb9 --> |"1"| role_8acf5917
+			linkStyle 91 stroke:#04c875,color:#04c875
+			role_8acf5917("[role] password_policy")
+			style role_8acf5917 fill:#04c875,color:#ffffff,stroke:#04c875
+				task_2eae0506[" password_policy : set password policy"]
+				style task_2eae0506 stroke:#04c875,fill:#ffffff
+				role_8acf5917 --> |"1"| task_2eae0506
+				linkStyle 92 stroke:#04c875,color:#04c875
+			%% End of the role 'password_policy'
+			%% Start of the role 'ad'
+			play_3b601cb9 --> |"2"| role_cb3456c2
+			linkStyle 93 stroke:#04c875,color:#04c875
+			role_cb3456c2("[role] ad")
+			style role_cb3456c2 fill:#04c875,color:#ffffff,stroke:#04c875
+				task_735b5f9d[" ad : Ensure Administrator is part of Domain Admins"]
+				style task_735b5f9d stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"1"| task_735b5f9d
+				linkStyle 94 stroke:#04c875,color:#04c875
+				task_eecce331[" ad : Create OU"]
+				style task_eecce331 stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"2"| task_eecce331
+				linkStyle 95 stroke:#04c875,color:#04c875
+				task_2f3a2769[" ad : Create Groups Universal"]
+				style task_2f3a2769 stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"3 [when: ad_groups['universal'] is defined]"| task_2f3a2769
+				linkStyle 96 stroke:#04c875,color:#04c875
+				task_bbbde263[" ad : Create Groups Global"]
+				style task_bbbde263 stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"4 [when: ad_groups['global'] is defined]"| task_bbbde263
+				linkStyle 97 stroke:#04c875,color:#04c875
+				task_a73c19ea[" ad : Create Groups domainlocal"]
+				style task_a73c19ea stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"5 [when: ad_groups['domainlocal'] is defined]"| task_a73c19ea
+				linkStyle 98 stroke:#04c875,color:#04c875
+				task_ce3f31a3[" ad : Sync the contents of one directory to another - hack to get Requires -Module Ansible.ModuleUtils.Legacy loaded"]
+				style task_ce3f31a3 stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"6"| task_ce3f31a3
+				linkStyle 99 stroke:#04c875,color:#04c875
+				task_8d2ee971[" ad : Create users"]
+				style task_8d2ee971 stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"7"| task_8d2ee971
+				linkStyle 100 stroke:#04c875,color:#04c875
+				task_2d4a54c5[" ad : Set users SPN lists"]
+				style task_2d4a54c5 stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"8 [when: item.value.spns is defined]"| task_2d4a54c5
+				linkStyle 101 stroke:#04c875,color:#04c875
+				task_ef0cba72[" ad : Assign managed_by domainlocal groups"]
+				style task_ef0cba72 stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"9 [when: ad_groups['domainlocal'] is defined and item.value.managed_by is defined]"| task_ef0cba72
+				linkStyle 102 stroke:#04c875,color:#04c875
+				task_cb519f84[" ad : Assign managed_by universal groups"]
+				style task_cb519f84 stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"10 [when: ad_groups['universal'] is defined and item.value.managed_by is defined]"| task_cb519f84
+				linkStyle 103 stroke:#04c875,color:#04c875
+				task_c5168fbc[" ad : Assign managed_by global groups"]
+				style task_c5168fbc stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"11 [when: ad_groups['global'] is defined and item.value.managed_by is defined]"| task_c5168fbc
+				linkStyle 104 stroke:#04c875,color:#04c875
+				task_10375f7b[" ad : Add members to the Universal group, preserving existing membership"]
+				style task_10375f7b stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"12 [when: ad_groups['universal'] is defined and item.value.members is defined]"| task_10375f7b
+				linkStyle 105 stroke:#04c875,color:#04c875
+				task_c24a15e8[" ad : Add members to the Global group, preserving existing membership"]
+				style task_c24a15e8 stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"13 [when: ad_groups['global'] is defined and item.value.members is defined]"| task_c24a15e8
+				linkStyle 106 stroke:#04c875,color:#04c875
+				task_82cc3587[" ad : Add members to the Domainlocal group, preserving existing membership"]
+				style task_82cc3587 stroke:#04c875,fill:#ffffff
+				role_cb3456c2 --> |"14 [when: ad_groups['domainlocal'] is defined and item.value.members is defined]"| task_82cc3587
+				linkStyle 107 stroke:#04c875,color:#04c875
+			%% End of the role 'ad'
+		%% End of the play 'Play: DCs AD data configuration (0)'
+		%% Start of the play 'Play: Servers AD data configuration (0)'
+		play_4881002a["Play: Servers AD data configuration (0)"]
+		style play_4881002a fill:#7501cb,color:#ffffff
+		playbook_1af32815 --> |"20"| play_4881002a
+		linkStyle 108 stroke:#7501cb,color:#7501cb
+			%% Start of the role 'settings/copy_files'
+			play_4881002a --> |"1"| role_cd420403
+			linkStyle 109 stroke:#7501cb,color:#7501cb
+			role_cd420403("[role] settings/copy_files")
+			style role_cd420403 fill:#7501cb,color:#ffffff,stroke:#7501cb
+				task_50376bd8[" settings/copy_files : Create directory"]
+				style task_50376bd8 stroke:#7501cb,fill:#ffffff
+				role_cd420403 --> |"1"| task_50376bd8
+				linkStyle 110 stroke:#7501cb,color:#7501cb
+				task_d5148a95[" settings/copy_files : Download GOAD img in C:\tmp"]
+				style task_d5148a95 stroke:#7501cb,fill:#ffffff
+				role_cd420403 --> |"2"| task_d5148a95
+				linkStyle 111 stroke:#7501cb,color:#7501cb
+			%% End of the role 'settings/copy_files'
+		%% End of the play 'Play: Servers AD data configuration (0)'
+		%% Start of the play 'Play: Move to OU (0)'
+		play_1642fc1b["Play: Move to OU (0)"]
+		style play_1642fc1b fill:#167db6,color:#ffffff
+		playbook_1af32815 --> |"21"| play_1642fc1b
+		linkStyle 112 stroke:#167db6,color:#167db6
+			%% Start of the role 'move_to_ou'
+			play_1642fc1b --> |"1"| role_74a805da
+			linkStyle 113 stroke:#167db6,color:#167db6
+			role_74a805da("[role] move_to_ou")
+			style role_74a805da fill:#167db6,color:#ffffff,stroke:#167db6
+				task_ecf06ef7[" move_to_ou : Move computer to OU"]
+				style task_ecf06ef7 stroke:#167db6,fill:#ffffff
+				role_74a805da --> |"1 [when: item.value.type != 'dc' and member_domain == item.value.domain and (item.value.use_laps is not defined or item.value.use_laps != true)]"| task_ecf06ef7
+				linkStyle 114 stroke:#167db6,color:#167db6
+			%% End of the role 'move_to_ou'
+		%% End of the play 'Play: Move to OU (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_2df350f6["Play: Read data files (0)"]
+		style play_2df350f6 fill:#bd0f7b,color:#ffffff
+		playbook_1af32815 --> |"22"| play_2df350f6
+		linkStyle 115 stroke:#bd0f7b,color:#bd0f7b
+			task_250fc40b["[task]  save the Json data to a Variable as a Fact"]
+			style task_250fc40b stroke:#bd0f7b,fill:#ffffff
+			play_2df350f6 --> |"1"| task_250fc40b
+			linkStyle 116 stroke:#bd0f7b,color:#bd0f7b
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: GMSA inside AD (0)'
+		play_79eab609["Play: GMSA inside AD (0)"]
+		style play_79eab609 fill:#1b2ab1,color:#ffffff
+		playbook_1af32815 --> |"23"| play_79eab609
+		linkStyle 117 stroke:#1b2ab1,color:#1b2ab1
+			%% Start of the role 'gmsa'
+			play_79eab609 --> |"1"| role_b25682fc
+			linkStyle 118 stroke:#1b2ab1,color:#1b2ab1
+			role_b25682fc("[role] gmsa")
+			style role_b25682fc fill:#1b2ab1,color:#ffffff,stroke:#1b2ab1
+				task_428eb739[" gmsa : Create GMSA Account"]
+				style task_428eb739 stroke:#1b2ab1,fill:#ffffff
+				role_b25682fc --> |"1"| task_428eb739
+				linkStyle 119 stroke:#1b2ab1,color:#1b2ab1
+			%% End of the role 'gmsa'
+		%% End of the play 'Play: GMSA inside AD (0)'
+		%% Start of the play 'Play: GMSA hosts (0)'
+		play_5017841e["Play: GMSA hosts (0)"]
+		style play_5017841e fill:#3b3d90,color:#ffffff
+		playbook_1af32815 --> |"24"| play_5017841e
+		linkStyle 120 stroke:#3b3d90,color:#3b3d90
+			%% Start of the role 'gmsa_hosts'
+			play_5017841e --> |"1"| role_4883a048
+			linkStyle 121 stroke:#3b3d90,color:#3b3d90
+			role_4883a048("[role] gmsa_hosts")
+			style role_4883a048 fill:#3b3d90,color:#ffffff,stroke:#3b3d90
+				task_fafbb023[" gmsa_hosts : Install-WindowsFeature RSAT-AD-PowerShell"]
+				style task_fafbb023 stroke:#3b3d90,fill:#ffffff
+				role_4883a048 --> |"1 [when: hostname in item.value.gMSA_HostNames]"| task_fafbb023
+				linkStyle 122 stroke:#3b3d90,color:#3b3d90
+				task_ade8c790[" gmsa_hosts : Install ADServiceAccount"]
+				style task_ade8c790 stroke:#3b3d90,fill:#ffffff
+				role_4883a048 --> |"2 [when: hostname in item.value.gMSA_HostNames]"| task_ade8c790
+				linkStyle 123 stroke:#3b3d90,color:#3b3d90
+			%% End of the role 'gmsa_hosts'
+		%% End of the play 'Play: GMSA hosts (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_07d17482["Play: Read data files (0)"]
+		style play_07d17482 fill:#af251d,color:#ffffff
+		playbook_1af32815 --> |"25"| play_07d17482
+		linkStyle 124 stroke:#af251d,color:#af251d
+			task_b301a3f5["[task]  save the Json data to a Variable as a Fact"]
+			style task_b301a3f5 stroke:#af251d,fill:#ffffff
+			play_07d17482 --> |"1"| task_b301a3f5
+			linkStyle 125 stroke:#af251d,color:#af251d
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: configure laps on DCs (0)'
+		play_3eaa5172["Play: configure laps on DCs (0)"]
+		style play_3eaa5172 fill:#1ab28e,color:#ffffff
+		playbook_1af32815 --> |"26"| play_3eaa5172
+		linkStyle 126 stroke:#1ab28e,color:#1ab28e
+			%% Start of the role 'laps/dc'
+			play_3eaa5172 --> |"1"| role_7d2cfab5
+			linkStyle 127 stroke:#1ab28e,color:#1ab28e
+			role_7d2cfab5("[role] laps/dc")
+			style role_7d2cfab5 fill:#1ab28e,color:#ffffff,stroke:#1ab28e
+				task_78fb007a[" laps/dc : Create Laps OU if not exist"]
+				style task_78fb007a stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"1 [when: laps_path != false]"| task_78fb007a
+				linkStyle 128 stroke:#1ab28e,color:#1ab28e
+				task_b47bb42b[" laps/dc : Install LAPS Package on Servers"]
+				style task_b47bb42b stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"2 [when: laps_path != false]"| task_b47bb42b
+				linkStyle 129 stroke:#1ab28e,color:#1ab28e
+				task_f00623b8[" laps/dc : Reboot After Installing LAPS on Servers"]
+				style task_f00623b8 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"3 [when: laps_path != false and pri_laps_install.reboot_required]"| task_f00623b8
+				linkStyle 130 stroke:#1ab28e,color:#1ab28e
+				task_b50a8d42[" laps/dc : Configure Password Properties"]
+				style task_b50a8d42 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"4 [when: laps_path != false]"| task_b50a8d42
+				linkStyle 131 stroke:#1ab28e,color:#1ab28e
+				task_34f1aa0b[" laps/dc : Configure Password Expiry Time"]
+				style task_34f1aa0b stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"5 [when: laps_path != false]"| task_34f1aa0b
+				linkStyle 132 stroke:#1ab28e,color:#1ab28e
+				task_60a6b208[" laps/dc : Add LAPS attributes to the Computer Attribute"]
+				style task_60a6b208 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"6 [when: laps_path != false]"| task_60a6b208
+				linkStyle 133 stroke:#1ab28e,color:#1ab28e
+				task_8e162d8b[" laps/dc : Apply DACL to OU Containers"]
+				style task_8e162d8b stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"7 [when: laps_path != false]"| task_8e162d8b
+				linkStyle 134 stroke:#1ab28e,color:#1ab28e
+				task_8260e327[" laps/dc : Create LAPS GPO"]
+				style task_8260e327 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"8 [when: laps_path != false]"| task_8260e327
+				linkStyle 135 stroke:#1ab28e,color:#1ab28e
+				task_8cb71408[" laps/dc : Add LAPS extension to GPO"]
+				style task_8cb71408 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"9 [when: laps_path != false]"| task_8cb71408
+				linkStyle 136 stroke:#1ab28e,color:#1ab28e
+				task_ded3cfb7[" laps/dc : Configure Password Policy Settings on GPO"]
+				style task_ded3cfb7 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"10 [when: laps_path != false]"| task_ded3cfb7
+				linkStyle 137 stroke:#1ab28e,color:#1ab28e
+				task_ab507422[" laps/dc : Configure Expiration Protection on GPO"]
+				style task_ab507422 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"11 [when: laps_path != false]"| task_ab507422
+				linkStyle 138 stroke:#1ab28e,color:#1ab28e
+				task_d506114b[" laps/dc : Remove Configuration for Expiration Protection on GPO"]
+				style task_d506114b stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"12 [when: laps_path != false]"| task_d506114b
+				linkStyle 139 stroke:#1ab28e,color:#1ab28e
+				task_913b337c[" laps/dc : Configure Custom Admin Username Policy on GPO"]
+				style task_913b337c stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"13 [when: laps_path != false]"| task_913b337c
+				linkStyle 140 stroke:#1ab28e,color:#1ab28e
+				task_2d86b435[" laps/dc : Enable the GPO"]
+				style task_2d86b435 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"14 [when: laps_path != false]"| task_2d86b435
+				linkStyle 141 stroke:#1ab28e,color:#1ab28e
+				task_bcdaf7f3[" laps/dc : Create Comment File for GPO"]
+				style task_bcdaf7f3 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"15 [when: laps_path != false]"| task_bcdaf7f3
+				linkStyle 142 stroke:#1ab28e,color:#1ab28e
+				task_9f50d9f9[" laps/dc : Ensure GPO is Linked"]
+				style task_9f50d9f9 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"16 [when: laps_path != false]"| task_9f50d9f9
+				linkStyle 143 stroke:#1ab28e,color:#1ab28e
+				task_5c9bf4f1[" laps/dc : Move server to Laps OU"]
+				style task_5c9bf4f1 stroke:#1ab28e,fill:#ffffff
+				role_7d2cfab5 --> |"17 [when: laps_path != false and item.value.use_laps is defined and item.value.use_laps == true and item.value.domain == domain]"| task_5c9bf4f1
+				linkStyle 144 stroke:#1ab28e,color:#1ab28e
+			%% End of the role 'laps/dc'
+		%% End of the play 'Play: configure laps on DCs (0)'
+		%% Start of the play 'Play: configure laps on servers (0)'
+		play_5fea1c69["Play: configure laps on servers (0)"]
+		style play_5fea1c69 fill:#c309a4,color:#ffffff
+		playbook_1af32815 --> |"27"| play_5fea1c69
+		linkStyle 145 stroke:#c309a4,color:#c309a4
+			%% Start of the role 'laps/server'
+			play_5fea1c69 --> |"1"| role_f2c70919
+			linkStyle 146 stroke:#c309a4,color:#c309a4
+			role_f2c70919("[role] laps/server")
+			style role_f2c70919 fill:#c309a4,color:#ffffff,stroke:#c309a4
+				task_f62c65da[" laps/server : Install to Servers"]
+				style task_f62c65da stroke:#c309a4,fill:#ffffff
+				role_f2c70919 --> |"1 [when: laps_path != false and use_laps == true]"| task_f62c65da
+				linkStyle 147 stroke:#c309a4,color:#c309a4
+				task_c089c274[" laps/server : reboot after installing LAPS if required"]
+				style task_c089c274 stroke:#c309a4,fill:#ffffff
+				role_f2c70919 --> |"2 [when: laps_path != false and use_laps == true and pri_laps_install.reboot_required]"| task_c089c274
+				linkStyle 148 stroke:#c309a4,color:#c309a4
+				task_d7217c4c[" laps/server : Refresh GPO on the Clients"]
+				style task_d7217c4c stroke:#c309a4,fill:#ffffff
+				role_f2c70919 --> |"3 [when: laps_path != false and use_laps == true]"| task_d7217c4c
+				linkStyle 149 stroke:#c309a4,color:#c309a4
+			%% End of the role 'laps/server'
+		%% End of the play 'Play: configure laps on servers (0)'
+		%% Start of the play 'Play: verify and show laps passwords (0)'
+		play_f18e19a1["Play: verify and show laps passwords (0)"]
+		style play_f18e19a1 fill:#83495d,color:#ffffff
+		playbook_1af32815 --> |"28"| play_f18e19a1
+		linkStyle 150 stroke:#83495d,color:#83495d
+			%% Start of the role 'laps/verify'
+			play_f18e19a1 --> |"1"| role_8c598bc8
+			linkStyle 151 stroke:#83495d,color:#83495d
+			role_8c598bc8("[role] laps/verify")
+			style role_8c598bc8 fill:#83495d,color:#ffffff,stroke:#83495d
+				task_23f1412a[" laps/verify : Retrieve LAPS Password on server"]
+				style task_23f1412a stroke:#83495d,fill:#ffffff
+				role_8c598bc8 --> |"1 [when: item.value.use_laps is defined and item.value.use_laps == true and item.value.domain == domain]"| task_23f1412a
+				linkStyle 152 stroke:#83495d,color:#83495d
+				task_ef714815[" laps/verify : Show new laps password"]
+				style task_ef714815 stroke:#83495d,fill:#ffffff
+				role_8c598bc8 --> |"2 [when: item.stdout_lines is defined]"| task_ef714815
+				linkStyle 153 stroke:#83495d,color:#83495d
+			%% End of the role 'laps/verify'
+		%% End of the play 'Play: verify and show laps passwords (0)'
+		%% Start of the play 'Play: set laps users and groups permission (0)'
+		play_e12e0c0b["Play: set laps users and groups permission (0)"]
+		style play_e12e0c0b fill:#9e332e,color:#ffffff
+		playbook_1af32815 --> |"29"| play_e12e0c0b
+		linkStyle 154 stroke:#9e332e,color:#9e332e
+			%% Start of the role 'laps/permissions'
+			play_e12e0c0b --> |"1"| role_e16572a1
+			linkStyle 155 stroke:#9e332e,color:#9e332e
+			role_e16572a1("[role] laps/permissions")
+			style role_e16572a1 fill:#9e332e,color:#ffffff,stroke:#9e332e
+				task_02c48dc9[" laps/permissions : Add user or group permission to read Laps"]
+				style task_02c48dc9 stroke:#9e332e,fill:#ffffff
+				role_e16572a1 --> |"1 [when: laps_readers is defined]"| task_02c48dc9
+				linkStyle 156 stroke:#9e332e,color:#9e332e
+			%% End of the role 'laps/permissions'
+		%% End of the play 'Play: set laps users and groups permission (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_6fc38362["Play: Read data files (0)"]
+		style play_6fc38362 fill:#a62679,color:#ffffff
+		playbook_1af32815 --> |"30"| play_6fc38362
+		linkStyle 157 stroke:#a62679,color:#a62679
+			task_990abd55["[task]  save the Json data to a Variable as a Fact"]
+			style task_990abd55 stroke:#a62679,fill:#ffffff
+			play_6fc38362 --> |"1"| task_990abd55
+			linkStyle 158 stroke:#a62679,color:#a62679
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: Adjust rights configuration (0)'
+		play_4e4276e1["Play: Adjust rights configuration (0)"]
+		style play_4e4276e1 fill:#66a824,color:#ffffff
+		playbook_1af32815 --> |"31"| play_4e4276e1
+		linkStyle 159 stroke:#66a824,color:#66a824
+			%% Start of the role 'settings/adjust_rights'
+			play_4e4276e1 --> |"1"| role_32152448
+			linkStyle 160 stroke:#66a824,color:#66a824
+			role_32152448("[role] settings/adjust_rights")
+			style role_32152448 fill:#66a824,color:#ffffff,stroke:#66a824
+				task_193d0777[" settings/adjust_rights : Add domain users to local groups"]
+				style task_193d0777 stroke:#66a824,fill:#ffffff
+				role_32152448 --> |"1"| task_193d0777
+				linkStyle 161 stroke:#66a824,color:#66a824
+			%% End of the role 'settings/adjust_rights'
+			%% Start of the role 'settings/user_rights'
+			play_4e4276e1 --> |"2"| role_421163ca
+			linkStyle 162 stroke:#66a824,color:#66a824
+			role_421163ca("[role] settings/user_rights")
+			style role_421163ca fill:#66a824,color:#ffffff,stroke:#66a824
+				task_f782fbfe[" settings/user_rights : Add remote desktop and administrators group to rdp"]
+				style task_f782fbfe stroke:#66a824,fill:#ffffff
+				role_421163ca --> |"1"| task_f782fbfe
+				linkStyle 163 stroke:#66a824,color:#66a824
+			%% End of the role 'settings/user_rights'
+		%% End of the play 'Play: Adjust rights configuration (0)'
+		%% Start of the play 'Play: cross domain groups (0)'
+		play_2b42242d["Play: cross domain groups (0)"]
+		style play_2b42242d fill:#166ab6,color:#ffffff
+		playbook_1af32815 --> |"32"| play_2b42242d
+		linkStyle 164 stroke:#166ab6,color:#166ab6
+			%% Start of the role 'groups_domains'
+			play_2b42242d --> |"1"| role_391099c6
+			linkStyle 165 stroke:#166ab6,color:#166ab6
+			role_391099c6("[role] groups_domains")
+			style role_391099c6 fill:#166ab6,color:#ffffff,stroke:#166ab6
+				task_2d7c2e16[" groups_domains : Reboot and wait for the AD system to restart"]
+				style task_2d7c2e16 stroke:#166ab6,fill:#ffffff
+				role_391099c6 --> |"1"| task_2d7c2e16
+				linkStyle 166 stroke:#166ab6,color:#166ab6
+				task_b71e45cd[" groups_domains : synchronizes all domains"]
+				style task_b71e45cd stroke:#166ab6,fill:#ffffff
+				role_391099c6 --> |"2"| task_b71e45cd
+				linkStyle 167 stroke:#166ab6,color:#166ab6
+				task_30882be9[" groups_domains : Add a domain user/group from another Domain in the multi-domain forest to a domain group : {{domain_server}}"]
+				style task_30882be9 stroke:#166ab6,fill:#ffffff
+				role_391099c6 --> |"3"| task_30882be9
+				linkStyle 168 stroke:#166ab6,color:#166ab6
+			%% End of the role 'groups_domains'
+		%% End of the play 'Play: cross domain groups (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_6bc0abd6["Play: Read data files (0)"]
+		style play_6bc0abd6 fill:#aa13b9,color:#ffffff
+		playbook_1af32815 --> |"33"| play_6bc0abd6
+		linkStyle 169 stroke:#aa13b9,color:#aa13b9
+			task_3659c197["[task]  save the Json data to a Variable as a Fact"]
+			style task_3659c197 stroke:#aa13b9,fill:#ffffff
+			play_6bc0abd6 --> |"1"| task_3659c197
+			linkStyle 170 stroke:#aa13b9,color:#aa13b9
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: ADCS (0)'
+		play_7a7a2c41["Play: ADCS (0)"]
+		style play_7a7a2c41 fill:#c0650c,color:#ffffff
+		playbook_1af32815 --> |"34"| play_7a7a2c41
+		linkStyle 171 stroke:#c0650c,color:#c0650c
+			%% Start of the role 'adcs'
+			play_7a7a2c41 --> |"1"| role_955f0f19
+			linkStyle 172 stroke:#c0650c,color:#c0650c
+			role_955f0f19("[role] adcs")
+			style role_955f0f19 fill:#c0650c,color:#ffffff,stroke:#c0650c
+				task_8095b51b[" adcs : Install ADCS"]
+				style task_8095b51b stroke:#c0650c,fill:#ffffff
+				role_955f0f19 --> |"1"| task_8095b51b
+				linkStyle 173 stroke:#c0650c,color:#c0650c
+				task_e390e5e4[" adcs : Install-WindowsFeature ADCS-Cert-Authority"]
+				style task_e390e5e4 stroke:#c0650c,fill:#ffffff
+				role_955f0f19 --> |"2"| task_e390e5e4
+				linkStyle 174 stroke:#c0650c,color:#c0650c
+				task_891f5d5e[" adcs : Install-WindowsFeature ADCS-Web-Enrollment"]
+				style task_891f5d5e stroke:#c0650c,fill:#ffffff
+				role_955f0f19 --> |"3 [when: ca_web_enrollment]"| task_891f5d5e
+				linkStyle 175 stroke:#c0650c,color:#c0650c
+				task_8cc75031[" adcs : Install-ADCSCertificationAuthority-PS"]
+				style task_8cc75031 stroke:#c0650c,fill:#ffffff
+				role_955f0f19 --> |"4"| task_8cc75031
+				linkStyle 176 stroke:#c0650c,color:#c0650c
+				task_dbc2596e[" adcs : Enable Web enrollement"]
+				style task_dbc2596e stroke:#c0650c,fill:#ffffff
+				role_955f0f19 --> |"5 [when: ca_web_enrollment]"| task_dbc2596e
+				linkStyle 177 stroke:#c0650c,color:#c0650c
+				task_fd7d5c79[" adcs : Refresh"]
+				style task_fd7d5c79 stroke:#c0650c,fill:#ffffff
+				role_955f0f19 --> |"6"| task_fd7d5c79
+				linkStyle 178 stroke:#c0650c,color:#c0650c
+			%% End of the role 'adcs'
+		%% End of the play 'Play: ADCS (0)'
+		%% Start of the play 'Play: ADCS (0)'
+		play_43b03510["Play: ADCS (0)"]
+		style play_43b03510 fill:#6a5676,color:#ffffff
+		playbook_1af32815 --> |"35"| play_43b03510
+		linkStyle 179 stroke:#6a5676,color:#6a5676
+			%% Start of the role 'adcs_templates'
+			play_43b03510 --> |"1"| role_d5e2687e
+			linkStyle 180 stroke:#6a5676,color:#6a5676
+			role_d5e2687e("[role] adcs_templates")
+			style role_d5e2687e fill:#6a5676,color:#ffffff,stroke:#6a5676
+				task_09a461f3[" adcs_templates : Refresh"]
+				style task_09a461f3 stroke:#6a5676,fill:#ffffff
+				role_d5e2687e --> |"1"| task_09a461f3
+				linkStyle 181 stroke:#6a5676,color:#6a5676
+				task_9a897790[" adcs_templates : Install ADCSTemplate Module"]
+				style task_9a897790 stroke:#6a5676,fill:#ffffff
+				role_d5e2687e --> |"2"| task_9a897790
+				linkStyle 182 stroke:#6a5676,color:#6a5676
+				task_d814e0ee[" adcs_templates : create a directory for templates"]
+				style task_d814e0ee stroke:#6a5676,fill:#ffffff
+				role_d5e2687e --> |"3"| task_d814e0ee
+				linkStyle 183 stroke:#6a5676,color:#6a5676
+				task_75cf8b17[" adcs_templates : Copy templates json"]
+				style task_75cf8b17 stroke:#6a5676,fill:#ffffff
+				role_d5e2687e --> |"4"| task_75cf8b17
+				linkStyle 184 stroke:#6a5676,color:#6a5676
+				task_11edac38[" adcs_templates : Install templates"]
+				style task_11edac38 stroke:#6a5676,fill:#ffffff
+				role_d5e2687e --> |"5"| task_11edac38
+				linkStyle 185 stroke:#6a5676,color:#6a5676
+				task_8cd90aab[" adcs_templates : Configure ATTRIBUTESUBJECTALTNAME2 on CA - ESC6"]
+				style task_8cd90aab stroke:#6a5676,fill:#ffffff
+				role_d5e2687e --> |"6"| task_8cd90aab
+				linkStyle 186 stroke:#6a5676,color:#6a5676
+				task_d9f8c9f5[" adcs_templates : Refresh"]
+				style task_d9f8c9f5 stroke:#6a5676,fill:#ffffff
+				role_d5e2687e --> |"7"| task_d9f8c9f5
+				linkStyle 187 stroke:#6a5676,color:#6a5676
+			%% End of the role 'adcs_templates'
+		%% End of the play 'Play: ADCS (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_d0bae84e["Play: Read data files (0)"]
+		style play_d0bae84e fill:#039bc9,color:#ffffff
+		playbook_1af32815 --> |"36"| play_d0bae84e
+		linkStyle 188 stroke:#039bc9,color:#039bc9
+			task_cea0d5f7["[task]  save the Json data to a Variable as a Fact"]
+			style task_cea0d5f7 stroke:#039bc9,fill:#ffffff
+			play_d0bae84e --> |"1"| task_cea0d5f7
+			linkStyle 189 stroke:#039bc9,color:#039bc9
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: ACL inside AD (0)'
+		play_03dc678d["Play: ACL inside AD (0)"]
+		style play_03dc678d fill:#1f0dbf,color:#ffffff
+		playbook_1af32815 --> |"37"| play_03dc678d
+		linkStyle 190 stroke:#1f0dbf,color:#1f0dbf
+			%% Start of the role 'acl'
+			play_03dc678d --> |"1"| role_01beed55
+			linkStyle 191 stroke:#1f0dbf,color:#1f0dbf
+			role_01beed55("[role] acl")
+			style role_01beed55 fill:#1f0dbf,color:#ffffff,stroke:#1f0dbf
+				task_a5ea7bfa[" acl : set acl"]
+				style task_a5ea7bfa stroke:#1f0dbf,fill:#ffffff
+				role_01beed55 --> |"1"| task_a5ea7bfa
+				linkStyle 192 stroke:#1f0dbf,color:#1f0dbf
+			%% End of the role 'acl'
+		%% End of the play 'Play: ACL inside AD (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_25f46353["Play: Read data files (0)"]
+		style play_25f46353 fill:#11bb60,color:#ffffff
+		playbook_1af32815 --> |"38"| play_25f46353
+		linkStyle 193 stroke:#11bb60,color:#11bb60
+			task_18b97fcb["[task]  save the Json data to a Variable as a Fact"]
+			style task_18b97fcb stroke:#11bb60,fill:#ffffff
+			play_25f46353 --> |"1"| task_18b97fcb
+			linkStyle 194 stroke:#11bb60,color:#11bb60
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: Install IIS (0)'
+		play_cba1dfe7["Play: Install IIS (0)"]
+		style play_cba1dfe7 fill:#af10bc,color:#ffffff
+		playbook_1af32815 --> |"39"| play_cba1dfe7
+		linkStyle 195 stroke:#af10bc,color:#af10bc
+			%% Start of the role 'iis'
+			play_cba1dfe7 --> |"1"| role_d21ecdae
+			linkStyle 196 stroke:#af10bc,color:#af10bc
+			role_d21ecdae("[role] iis")
+			style role_d21ecdae fill:#af10bc,color:#ffffff,stroke:#af10bc
+				task_a4a2d0cd[" iis : Install IIS Management Features"]
+				style task_a4a2d0cd stroke:#af10bc,fill:#ffffff
+				role_d21ecdae --> |"1"| task_a4a2d0cd
+				linkStyle 197 stroke:#af10bc,color:#af10bc
+				task_2c0c5ef0[" iis : Add SYSTEM allow rights to machine keys (required for installation of IIS 6 components)"]
+				style task_2c0c5ef0 stroke:#af10bc,fill:#ffffff
+				role_d21ecdae --> |"2"| task_2c0c5ef0
+				linkStyle 198 stroke:#af10bc,color:#af10bc
+				task_0577c35a[" iis : Install IIS 6 Compatibility Features"]
+				style task_0577c35a stroke:#af10bc,fill:#ffffff
+				role_d21ecdae --> |"3"| task_0577c35a
+				linkStyle 199 stroke:#af10bc,color:#af10bc
+				task_08696d57[" iis : Install IIS Web-Server with sub features and management tools"]
+				style task_08696d57 stroke:#af10bc,fill:#ffffff
+				role_d21ecdae --> |"4"| task_08696d57
+				linkStyle 200 stroke:#af10bc,color:#af10bc
+				task_2fe7a559[" iis : Create directory"]
+				style task_2fe7a559 stroke:#af10bc,fill:#ffffff
+				role_d21ecdae --> |"5"| task_2fe7a559
+				linkStyle 201 stroke:#af10bc,color:#af10bc
+				task_f6d766df[" iis : Create directory"]
+				style task_f6d766df stroke:#af10bc,fill:#ffffff
+				role_d21ecdae --> |"6"| task_f6d766df
+				linkStyle 202 stroke:#af10bc,color:#af10bc
+				task_827469b3[" iis : default-website-index"]
+				style task_827469b3 stroke:#af10bc,fill:#ffffff
+				role_d21ecdae --> |"7"| task_827469b3
+				linkStyle 203 stroke:#af10bc,color:#af10bc
+				task_f7ac36fe[" iis : Reboot if installing Web-Server feature requires it"]
+				style task_f7ac36fe stroke:#af10bc,fill:#ffffff
+				role_d21ecdae --> |"8 [when: win_feature.reboot_required]"| task_f7ac36fe
+				linkStyle 204 stroke:#af10bc,color:#af10bc
+			%% End of the role 'iis'
+		%% End of the play 'Play: Install IIS (0)'
+		%% Start of the play 'Play: Install MSSQL Express (0)'
+		play_b6d1d935["Play: Install MSSQL Express (0)"]
+		style play_b6d1d935 fill:#0607c6,color:#ffffff
+		playbook_1af32815 --> |"40"| play_b6d1d935
+		linkStyle 205 stroke:#0607c6,color:#0607c6
+			%% Start of the role 'mssql'
+			play_b6d1d935 --> |"1"| role_415af6c5
+			linkStyle 206 stroke:#0607c6,color:#0607c6
+			role_415af6c5("[role] mssql")
+			style role_415af6c5 fill:#0607c6,color:#ffffff,stroke:#0607c6
+				task_d1b89322[" mssql : Reboot before install (long timeout in case of update)"]
+				style task_d1b89322 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"1"| task_d1b89322
+				linkStyle 207 stroke:#0607c6,color:#0607c6
+				task_3e30eaa0[" mssql : create a directory for installer download"]
+				style task_3e30eaa0 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"2"| task_3e30eaa0
+				linkStyle 208 stroke:#0607c6,color:#0607c6
+				task_8cceb517[" mssql : create a directory for installer extraction"]
+				style task_8cceb517 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"3"| task_8cceb517
+				linkStyle 209 stroke:#0607c6,color:#0607c6
+				task_bb1f26f0[" mssql : create a directory for media extraction"]
+				style task_bb1f26f0 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"4"| task_bb1f26f0
+				linkStyle 210 stroke:#0607c6,color:#0607c6
+				task_ad177baf[" mssql : create the configuration file"]
+				style task_ad177baf stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"5"| task_ad177baf
+				linkStyle 211 stroke:#0607c6,color:#0607c6
+				task_484eae8d[" mssql : check downloaded file exists"]
+				style task_484eae8d stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"6"| task_484eae8d
+				linkStyle 212 stroke:#0607c6,color:#0607c6
+				task_03ecf3cc[" mssql : get the installer"]
+				style task_03ecf3cc stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"7 [when: not installer_file.stat.exists]"| task_03ecf3cc
+				linkStyle 213 stroke:#0607c6,color:#0607c6
+				task_8568f12e[" mssql : Add service account to Log on as a service"]
+				style task_8568f12e stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"8 [when: not SQLSVCACCOUNT == 'NT AUTHORITY\\NETWORK SERVICE']"| task_8568f12e
+				linkStyle 214 stroke:#0607c6,color:#0607c6
+				task_4cbe3bd3[" mssql : check install already done"]
+				style task_4cbe3bd3 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"9"| task_4cbe3bd3
+				linkStyle 215 stroke:#0607c6,color:#0607c6
+				task_7ce3e048[" mssql : Install the database"]
+				style task_7ce3e048 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"10 [when: not mssql_install_already_done.stat.exists]"| task_7ce3e048
+				linkStyle 216 stroke:#0607c6,color:#0607c6
+				task_8c73b1d3[" mssql : Add or update registry for ip port"]
+				style task_8c73b1d3 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"11"| task_8c73b1d3
+				linkStyle 217 stroke:#0607c6,color:#0607c6
+				task_09c3dcfb[" mssql : Restart a service"]
+				style task_09c3dcfb stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"12 [when: win_reg.changed]"| task_09c3dcfb
+				linkStyle 218 stroke:#0607c6,color:#0607c6
+				task_789f6733[" mssql : Add MSSQL admin"]
+				style task_789f6733 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"13"| task_789f6733
+				linkStyle 219 stroke:#0607c6,color:#0607c6
+				task_65dd9c52[" mssql : Add IMPERSONATE on login"]
+				style task_65dd9c52 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"14"| task_65dd9c52
+				linkStyle 220 stroke:#0607c6,color:#0607c6
+				task_9f563db5[" mssql : Add IMPERSONATE on user"]
+				style task_9f563db5 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"15"| task_9f563db5
+				linkStyle 221 stroke:#0607c6,color:#0607c6
+				task_10c16529[" mssql : Enable sa account"]
+				style task_10c16529 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"16"| task_10c16529
+				linkStyle 222 stroke:#0607c6,color:#0607c6
+				task_6ab4e670[" mssql : enable MSSQL authentication and windows authent"]
+				style task_6ab4e670 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"17"| task_6ab4e670
+				linkStyle 223 stroke:#0607c6,color:#0607c6
+				task_e04b7f2d[" mssql : Restart service"]
+				style task_e04b7f2d stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"18"| task_e04b7f2d
+				linkStyle 224 stroke:#0607c6,color:#0607c6
+				task_6ce4d7a0[" mssql : Firewall | Allow MSSQL through Firewall"]
+				style task_6ce4d7a0 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"19"| task_6ce4d7a0
+				linkStyle 225 stroke:#0607c6,color:#0607c6
+				task_beec6eb3[" mssql : Firewall | Allow MSSQL discover through Firewall"]
+				style task_beec6eb3 stroke:#0607c6,fill:#ffffff
+				role_415af6c5 --> |"20"| task_beec6eb3
+				linkStyle 226 stroke:#0607c6,color:#0607c6
+			%% End of the role 'mssql'
+			%% Start of the role 'mssql_link'
+			play_b6d1d935 --> |"2"| role_b7ebe2f9
+			linkStyle 227 stroke:#0607c6,color:#0607c6
+			role_b7ebe2f9("[role] mssql_link")
+			style role_b7ebe2f9 fill:#0607c6,color:#ffffff,stroke:#0607c6
+				task_b1539d6c[" mssql_link : Create SQL Linked server and enable RPC"]
+				style task_b1539d6c stroke:#0607c6,fill:#ffffff
+				role_b7ebe2f9 --> |"1"| task_b1539d6c
+				linkStyle 228 stroke:#0607c6,color:#0607c6
+				task_e8edcc39[" mssql_link : Create logins mapping to specific users"]
+				style task_e8edcc39 stroke:#0607c6,fill:#ffffff
+				role_b7ebe2f9 --> |"2"| task_e8edcc39
+				linkStyle 229 stroke:#0607c6,color:#0607c6
+				task_dac2be06[" mssql_link : default login impersonation"]
+				style task_dac2be06 stroke:#0607c6,fill:#ffffff
+				role_b7ebe2f9 --> |"3"| task_dac2be06
+				linkStyle 230 stroke:#0607c6,color:#0607c6
+			%% End of the role 'mssql_link'
+		%% End of the play 'Play: Install MSSQL Express (0)'
+		%% Start of the play 'Play: Install SQL Server Management Studio (0)'
+		play_6924616d["Play: Install SQL Server Management Studio (0)"]
+		style play_6924616d fill:#0c8fc0,color:#ffffff
+		playbook_1af32815 --> |"41"| play_6924616d
+		linkStyle 231 stroke:#0c8fc0,color:#0c8fc0
+			%% Start of the role 'mssql_ssms'
+			play_6924616d --> |"1"| role_ff500d76
+			linkStyle 232 stroke:#0c8fc0,color:#0c8fc0
+			role_ff500d76("[role] mssql_ssms")
+			style role_ff500d76 fill:#0c8fc0,color:#ffffff,stroke:#0c8fc0
+				task_72d56e7a[" mssql_ssms : check SQL Server Manager Studio installer exists"]
+				style task_72d56e7a stroke:#0c8fc0,fill:#ffffff
+				role_ff500d76 --> |"1"| task_72d56e7a
+				linkStyle 233 stroke:#0c8fc0,color:#0c8fc0
+				task_5df8b489[" mssql_ssms : get the installer"]
+				style task_5df8b489 stroke:#0c8fc0,fill:#ffffff
+				role_ff500d76 --> |"2 [when: not ssms_installer_file.stat.exists]"| task_5df8b489
+				linkStyle 234 stroke:#0c8fc0,color:#0c8fc0
+				task_27a816e3[" mssql_ssms : check SSMS installation already done"]
+				style task_27a816e3 stroke:#0c8fc0,fill:#ffffff
+				role_ff500d76 --> |"3"| task_27a816e3
+				linkStyle 235 stroke:#0c8fc0,color:#0c8fc0
+				task_935758dc[" mssql_ssms : Install SSMS"]
+				style task_935758dc stroke:#0c8fc0,fill:#ffffff
+				role_ff500d76 --> |"4 [when: not ssms_installation.stat.exists]"| task_935758dc
+				linkStyle 236 stroke:#0c8fc0,color:#0c8fc0
+				task_3f846024[" mssql_ssms : Reboot after install"]
+				style task_3f846024 stroke:#0c8fc0,fill:#ffffff
+				role_ff500d76 --> |"5 [when: not ssms_installation.stat.exists]"| task_3f846024
+				linkStyle 237 stroke:#0c8fc0,color:#0c8fc0
+			%% End of the role 'mssql_ssms'
+		%% End of the play 'Play: Install SQL Server Management Studio (0)'
+		%% Start of the play 'Play: Install Webdav (0)'
+		play_9ad2a5bb["Play: Install Webdav (0)"]
+		style play_9ad2a5bb fill:#b4189e,color:#ffffff
+		playbook_1af32815 --> |"42"| play_9ad2a5bb
+		linkStyle 238 stroke:#b4189e,color:#b4189e
+			%% Start of the role 'webdav'
+			play_9ad2a5bb --> |"1"| role_b9fe06ba
+			linkStyle 239 stroke:#b4189e,color:#b4189e
+			role_b9fe06ba("[role] webdav")
+			style role_b9fe06ba fill:#b4189e,color:#ffffff,stroke:#b4189e
+				task_f63f6b1f[" webdav : Ensure WebDAV client feature is installed"]
+				style task_f63f6b1f stroke:#b4189e,fill:#ffffff
+				role_b9fe06ba --> |"1"| task_f63f6b1f
+				linkStyle 240 stroke:#b4189e,color:#b4189e
+				task_ca60c868[" webdav : Reboot after installing WebDAV client feature"]
+				style task_ca60c868 stroke:#b4189e,fill:#ffffff
+				role_b9fe06ba --> |"2 [when: webdav_feature.reboot_required]"| task_ca60c868
+				linkStyle 241 stroke:#b4189e,color:#b4189e
+			%% End of the role 'webdav'
+		%% End of the play 'Play: Install Webdav (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_5801bf7b["Play: Read data files (0)"]
+		style play_5801bf7b fill:#4509c3,color:#ffffff
+		playbook_1af32815 --> |"43"| play_5801bf7b
+		linkStyle 242 stroke:#4509c3,color:#4509c3
+			task_09839ae2["[task]  save the Json data to a Variable as a Fact"]
+			style task_09839ae2 stroke:#4509c3,fill:#ffffff
+			play_5801bf7b --> |"1"| task_09839ae2
+			linkStyle 243 stroke:#4509c3,color:#4509c3
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: Setup enable defender (0)'
+		play_5353a2ee["Play: Setup enable defender (0)"]
+		style play_5353a2ee fill:#ca0226,color:#ffffff
+		playbook_1af32815 --> |"44"| play_5353a2ee
+		linkStyle 244 stroke:#ca0226,color:#ca0226
+			%% Start of the role 'settings/windows_defender'
+			play_5353a2ee --> |"1"| role_f33f2cfb
+			linkStyle 245 stroke:#ca0226,color:#ca0226
+			role_f33f2cfb("[role] settings/windows_defender")
+			style role_f33f2cfb fill:#ca0226,color:#ffffff,stroke:#ca0226
+				task_677986e6[" settings/windows_defender : Install windows defender"]
+				style task_677986e6 stroke:#ca0226,fill:#ffffff
+				role_f33f2cfb --> |"1"| task_677986e6
+				linkStyle 246 stroke:#ca0226,color:#ca0226
+				task_f7fb3e25[" settings/windows_defender : Reboot if needed"]
+				style task_f7fb3e25 stroke:#ca0226,fill:#ffffff
+				role_f33f2cfb --> |"2 [when: win_defender_install.reboot_required]"| task_f7fb3e25
+				linkStyle 247 stroke:#ca0226,color:#ca0226
+				task_55602afd[" settings/windows_defender : Disable windows defender sending sample"]
+				style task_55602afd stroke:#ca0226,fill:#ffffff
+				role_f33f2cfb --> |"3"| task_55602afd
+				linkStyle 248 stroke:#ca0226,color:#ca0226
+				task_aa6bfe60[" settings/windows_defender : Disable windows defender sending sample"]
+				style task_aa6bfe60 stroke:#ca0226,fill:#ffffff
+				role_f33f2cfb --> |"4"| task_aa6bfe60
+				linkStyle 249 stroke:#ca0226,color:#ca0226
+				task_2af0d855[" settings/windows_defender : Disable network drive scanning"]
+				style task_2af0d855 stroke:#ca0226,fill:#ffffff
+				role_f33f2cfb --> |"5 [when: windows_defender_status == 'off']"| task_2af0d855
+				linkStyle 250 stroke:#ca0226,color:#ca0226
+				task_4e72cb8e[" settings/windows_defender : Disable realtime monitoring"]
+				style task_4e72cb8e stroke:#ca0226,fill:#ffffff
+				role_f33f2cfb --> |"6 [when: windows_defender_status == 'off']"| task_4e72cb8e
+				linkStyle 251 stroke:#ca0226,color:#ca0226
+			%% End of the role 'settings/windows_defender'
+		%% End of the play 'Play: Setup enable defender (0)'
+		%% Start of the play 'Play: Setup disable defender (0)'
+		play_20dc3469["Play: Setup disable defender (0)"]
+		style play_20dc3469 fill:#ab8721,color:#ffffff
+		playbook_1af32815 --> |"45"| play_20dc3469
+		linkStyle 252 stroke:#ab8721,color:#ab8721
+			%% Start of the role 'settings/windows_defender'
+			play_20dc3469 --> |"1"| role_0b039ca3
+			linkStyle 253 stroke:#ab8721,color:#ab8721
+			role_0b039ca3("[role] settings/windows_defender")
+			style role_0b039ca3 fill:#ab8721,color:#ffffff,stroke:#ab8721
+				task_3d448365[" settings/windows_defender : Install windows defender"]
+				style task_3d448365 stroke:#ab8721,fill:#ffffff
+				role_0b039ca3 --> |"1"| task_3d448365
+				linkStyle 254 stroke:#ab8721,color:#ab8721
+				task_81384f2a[" settings/windows_defender : Reboot if needed"]
+				style task_81384f2a stroke:#ab8721,fill:#ffffff
+				role_0b039ca3 --> |"2 [when: win_defender_install.reboot_required]"| task_81384f2a
+				linkStyle 255 stroke:#ab8721,color:#ab8721
+				task_17959f76[" settings/windows_defender : Disable windows defender sending sample"]
+				style task_17959f76 stroke:#ab8721,fill:#ffffff
+				role_0b039ca3 --> |"3"| task_17959f76
+				linkStyle 256 stroke:#ab8721,color:#ab8721
+				task_93eb2006[" settings/windows_defender : Disable windows defender sending sample"]
+				style task_93eb2006 stroke:#ab8721,fill:#ffffff
+				role_0b039ca3 --> |"4"| task_93eb2006
+				linkStyle 257 stroke:#ab8721,color:#ab8721
+				task_6b843b34[" settings/windows_defender : Disable network drive scanning"]
+				style task_6b843b34 stroke:#ab8721,fill:#ffffff
+				role_0b039ca3 --> |"5 [when: windows_defender_status == 'off']"| task_6b843b34
+				linkStyle 258 stroke:#ab8721,color:#ab8721
+				task_151b9574[" settings/windows_defender : Disable realtime monitoring"]
+				style task_151b9574 stroke:#ab8721,fill:#ffffff
+				role_0b039ca3 --> |"6 [when: windows_defender_status == 'off']"| task_151b9574
+				linkStyle 259 stroke:#ab8721,color:#ab8721
+			%% End of the role 'settings/windows_defender'
+		%% End of the play 'Play: Setup disable defender (0)'
+		%% Start of the play 'Play: Read data files (0)'
+		play_11626237["Play: Read data files (0)"]
+		style play_11626237 fill:#294ba3,color:#ffffff
+		playbook_1af32815 --> |"46"| play_11626237
+		linkStyle 260 stroke:#294ba3,color:#294ba3
+			task_a651762e["[task]  save the Json data to a Variable as a Fact"]
+			style task_a651762e stroke:#294ba3,fill:#ffffff
+			play_11626237 --> |"1"| task_a651762e
+			linkStyle 261 stroke:#294ba3,color:#294ba3
+		%% End of the play 'Play: Read data files (0)'
+		%% Start of the play 'Play: Setup vulnerabilities with tasks (0)'
+		play_1bdae3d5["Play: Setup vulnerabilities with tasks (0)"]
+		style play_1bdae3d5 fill:#618844,color:#ffffff
+		playbook_1af32815 --> |"47"| play_1bdae3d5
+		linkStyle 262 stroke:#618844,color:#618844
+			%% Start of the role 'vulns/{{vuln}}'
+			play_1bdae3d5 --> |"1"| role_994b2ff8
+			linkStyle 263 stroke:#618844,color:#618844
+			role_994b2ff8("[role] vulns/{{vuln}}")
+			style role_994b2ff8 fill:#618844,color:#ffffff,stroke:#618844
+			%% End of the role 'vulns/{{vuln}}'
+			%% Start of the role 'ps'
+			play_1bdae3d5 --> |"2"| role_d32a14e1
+			linkStyle 264 stroke:#618844,color:#618844
+			role_d32a14e1("[role] ps")
+			style role_d32a14e1 fill:#618844,color:#ffffff,stroke:#618844
+			%% End of the role 'ps'
+		%% End of the play 'Play: Setup vulnerabilities with tasks (0)'
+		%% Start of the play 'Play: Reboot all (0)'
+		play_f30d9df3["Play: Reboot all (0)"]
+		style play_f30d9df3 fill:#097fc3,color:#ffffff
+		playbook_1af32815 --> |"48"| play_f30d9df3
+		linkStyle 265 stroke:#097fc3,color:#097fc3
+			task_d48f5dc8["[task]  reboot"]
+			style task_d48f5dc8 stroke:#097fc3,fill:#ffffff
+			play_f30d9df3 --> |"1"| task_d48f5dc8
+			linkStyle 266 stroke:#097fc3,color:#097fc3
+		%% End of the play 'Play: Reboot all (0)'
+	%% End of the playbook 'goad/main.yml'
+
